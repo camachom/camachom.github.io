@@ -1,11 +1,9 @@
 ---
 layout: post
-title: "SQL Injection in Node/Mongo"
+title: "SQL Injection"
 date: 2020-05-19 19:27:56 -0700
 categories: jekyll update
 ---
-
-# SQL Injection in Node/Mongo
 
 I’ve been exploring the basics of authentication as a side project. As soon as I had a working prototype, my first thought was ‘How can I exploit this?’. I’m far from a security expert so I surely made some mistakes. The best place to start is with one of the most simple attacks: [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection). I found one practical example using Node/Mongo in this [article](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html).
 
