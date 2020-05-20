@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "SQL Injection"
+title: "SQL Injection in Node/Mongo"
 date: 2020-05-19 19:27:56 -0700
 categories: jekyll update
 ---
