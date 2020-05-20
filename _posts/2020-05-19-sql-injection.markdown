@@ -12,7 +12,7 @@ It's a bit dated, but the idea is to pass JSON instead of a string in the payloa
 ```javascript
 {
     "username": {"$gt": ""},
-    "password": ‘not important’
+    "password": "not important"
 }
 ```
 
