@@ -1,29 +1,53 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   2020-05-19 19:27:56 -0700
+title: "SQL Injection in Node/Mongo"
+date: 2020-05-19 19:27:56 -0700
 categories: jekyll update
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+# SQL Injection in Node/Mongo
 
-`YEAR-MONTH-DAY-title.MARKUP`
+I’ve been exploring the basics of authentication as a side project. As soon as I had a working prototype, my first thought was ‘How can I exploit this?’. I’m far from a security expert so I surely made some mistakes. The best place to start is with one of the most simple attacks: [SQL Injection](https://en.wikipedia.org/wiki/SQL_injection). I found one practical example using Node/Mongo in this [article](https://blog.websecurify.com/2014/08/hacking-nodejs-and-mongodb.html).
 
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
+It's a bit dated, but the idea is to pass JSON instead of a string in the payload for the username property.
 
-Jekyll also offers powerful support for code snippets:
+```javascript
+{
+    "username": {"$gt": ""},
+    "password": ‘not important’
+}
+```
 
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
+You can make the key a Mongo operator like `$gt`. `$gt` or `Greater than` will compare `""` (empty string) with usernames in your database lexicographically. This will likely evaluate to true on its first comparison and return an arbitrary user.
 
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
+```javascript
+app.post("/", async (req, res) => {
+  try {
+    const user = await User.findOne({ username: req.body.username });
+    // user could be anyone!
+  } catch (error) {
+    // handle error
+  }
+});
+```
 
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+One of the solutions that come out of the conversation around that article points to a [package](https://github.com/vkarpov15/mongo-sanitize#readme) that recursively looks for keys in the input that start with `$` and deletes them. No more sneaky Mongo operators. However, validation seems like a simpler solution to me.
+
+Here is an example using the Joi library to restrict the type of `username` to `string`:
+
+```javascript
+const authSchema = Joi.object({
+  username: Joi.string().min(3).alphanum().max(30).required(),
+  password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")).required(),
+});
+
+const { error, value } = authSchema.validate(req.body);
+```
+
+Submitting JSON as the value for `username` will now yield this validation error:
+
+```javascript
+"ValidationError: "username" must be a string"
+```
+
+This is an obvious and well known attack with a simple solution. My challenge is to now create a [CodeQL](https://securitylab.github.com/tools/codeql) query that can automatically detect these vulnerabilities.
