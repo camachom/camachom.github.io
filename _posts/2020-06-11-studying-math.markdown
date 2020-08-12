@@ -1,8 +1,7 @@
 ---
 layout: post
-title: "Going back to school as an adult"
+title: "Going back to school in my late 20s"
 date: 2020-06-11
-categories: jekyll update
 ---
 
 ## Reasoning
