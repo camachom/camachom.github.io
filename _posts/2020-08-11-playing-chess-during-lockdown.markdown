@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "The Importance of External Validation in Virtual Life or: How I Made $16.67 Playing Chess Online"
+title: "External Validation in Virtual Life or: How I Made $16.67 Playing Chess Online"
 date: 2020-08-11
 ---
 
