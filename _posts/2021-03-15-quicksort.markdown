@@ -42,7 +42,7 @@ function partitionHoare(array, left, right) {
 }
 ```
 
-Notice that pivot is an index. The loop is manipulating `array` by swapping elements. Therefore, `array[pivot]` can potentially take on different values between iterations. That's exactly what happens with this input array: `[-1,2,-8,-10]`.
+Notice that `pivot` is an index. The loop is mutating `array` by swapping elements. Therefore, `array[pivot]` can potentially take on different values between iterations. That's exactly what happens with this input array: `[-1,2,-8,-10]`.
 
 Here is a fix:
 
