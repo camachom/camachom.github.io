@@ -47,7 +47,7 @@ Notice that `pivot` is an index. The loop is mutating `array` by swapping elemen
 Here's a fix:
 
 ```javascript
-function partitionHoare(array = [], left, right) {
+function partitionHoare(array, left, right) {
 	var pivot = array[Math.floor((left + right) / 2)];
 
 	while (left <= right) {
