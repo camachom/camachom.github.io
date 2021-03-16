@@ -10,7 +10,7 @@ I googled `hoare partition quicksort javascript` and tested the implementation o
 
 ### In defense of the authors
 
-I purposely ignored any context the authors might've disclosed in their text. The idea was to get the code to run as quickly as possible with the least amount of modifications. I was trying to mimic a copy-paste frenzied developer who has exhausted their patience and whose tunnel vision has limited their typing to `Command-C`/`Command-V`. Will this Google binge pay off?
+I purposely ignored any context the authors might have disclosed in their text. The idea was to get the code to run as quickly as possible with the least amount of modifications. I was trying to mimic a copy-paste frenzied developer who had exhausted their patience and whose tunnel vision had limited their typing to `Command-C`/`Command-V`. Will this Google binge pay off?
 
 ### Results
 
