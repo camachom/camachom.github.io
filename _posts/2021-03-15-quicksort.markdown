@@ -68,4 +68,4 @@ function partitionHoare(array = [], left, right) {
 }
 ```
 
-In this case, `pivot` is an element not an index. The expression on line 2 is evaluate before the loop so any changes to `array` will not affect `pivot`.
+In this case, `pivot` is an element not an index. The expression on line 2 is evaluated before the loop so any changes to `array` will not affect `pivot`.
