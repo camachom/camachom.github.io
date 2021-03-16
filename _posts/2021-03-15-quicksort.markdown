@@ -14,11 +14,11 @@ I purposely ignored any context the authors might've disclosed in their text. Th
 
 ### Results
 
-The [first](https://itnext.io/a-sort-of-quick-guide-to-quicksort-and-hoares-partitioning-scheme-in-javascript-7792112c6d1?gi=98f309ebdbdc) implementation was the most successful. It failed for the edge case of inputs of length 1. I was able to pass all the tests after adding a simple conditional.
+The [first](https://itnext.io/a-sort-of-quick-guide-to-quicksort-and-hoares-partitioning-scheme-in-javascript-7792112c6d1?gi=98f309ebdbdc) implementation was the most successful. It failed for arrays with one element, but passed all other tests. I was able to take care of that edge case by adding a simple conditional.
 
-The second implementation needed more work. I like that it followed the pseudocode of the quicksort [Wikipedia](https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme) article closely. However, it could not sort inputs with duplicates.
+The [second](https://gist.github.com/shuboc/46ba75900b1e8ff1b5952ee94b33bd0c) implementation needed more work. I like that it followed the pseudocode in the quicksort [Wikipedia](https://en.wikipedia.org/wiki/Quicksort#Hoare_partition_scheme) article. However, it could not sort inputs with duplicates.
 
-The last implementation had a bug that took me an hour to figure out. Without knowing the details of the algorithm, you can still appreciate this lesson:
+The [last](https://rohan-paul.github.io/javascript/2018/01/11/Quick-Sort_Algorithm-in-JavaScript/) implementation had a bug that took me an hour to figure out. Without knowing the details of the algorithm, you can still appreciate this lesson:
 
 ```javascript
 function partitionHoare(array, left, right) {
