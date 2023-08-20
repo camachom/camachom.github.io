@@ -28,7 +28,7 @@ masthead_title           : # overrides the website title displayed in the masthe
 breadcrumbs            : true # true, false (default)
 words_per_minute         : 200
 
-repository               : "camachom/staticman"
+repository               : "camachom/camachom.github.io"
 comments:
   provider               : "staticman_v2" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "giscus", "custom"
   staticman:
