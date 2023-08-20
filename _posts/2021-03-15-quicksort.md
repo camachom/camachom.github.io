@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Copy pasting quicksort"
 date: 2021-03-15
 ---

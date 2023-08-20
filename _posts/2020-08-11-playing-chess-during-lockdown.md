@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "How I Made $16.67 Playing Chess Online"
 date: 2020-08-11
 ---

@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: single
 title: "Going back to school in my late 20s"
 date: 2020-06-11
 ---

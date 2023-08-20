@@ -1,7 +1,8 @@
 ---
-layout: mathPost
+layout: single
 title: "Deceptively Simple System of Equations"
 date: 2020-09-02
+mathjax: true
 ---
 
 I'm currently taking Differnetial Equations, and I have never felt more mathy. That dosen't mean I don't occasionally get stuck on simple algebra. Consider these equations from a homework problem:
