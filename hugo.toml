@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://camachom.githug.io/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Martin Camacho'
 theme = "poison"
