@@ -1,7 +1,6 @@
 ---
-title: "About"
-date: 2022-11-30
+title: "About me"
 draft: false
 ---
 
-not sure what this is about
+its not working
