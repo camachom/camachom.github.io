@@ -2,6 +2,7 @@
 title: "How I Made $16.67 Playing Chess Online"
 date: 2020-08-11
 tags: ["chess"]
+summary: "I started studying seriously, and playing for at least four hours a day on Chess.com."
 ---
 
 When lockdown began, I was let go of my job. I wanted to be physically active, but I was recovering from a knee injury which kept me from riding my bike. A personal situation produced so much anxiety I was unable to focus on interviewing or anything that wasn't my anxiety. All my routines that kept my day-to-day healthy and productive were no longer possible.

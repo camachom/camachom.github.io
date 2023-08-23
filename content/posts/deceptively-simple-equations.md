@@ -2,6 +2,16 @@
 title: "Deceptively Simple System of Equations"
 date: 2020-09-02
 tags: ["math"]
+summary: "I'm currently taking Differential Equations, and I have never felt more mathy. That doesn't mean I don't occasionally get stuck on simple algebra. Consider these equations from a homework problem:
+
+$$
+2a_{2} + 3a_{1}x + 4a_{0} = 0
+$$
+
+$$
+a_{2} + a_{1} + a_{0} = 1
+$$
+"
 ---
 
 I'm currently taking Differential Equations, and I have never felt more mathy. That doesn't mean I don't occasionally get stuck on simple algebra. Consider these equations from a homework problem:

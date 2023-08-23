@@ -2,6 +2,7 @@
 title: "Copy pasting quicksort"
 date: 2021-03-15
 tags: ["programming"]
+summary: "I googled `hoare partition quicksort javascript` and tested the implementation of the top three results. To validate correctness, I used LeetCode's [Sorting](https://leetcode.com/problems/sort-an-array/) test suite."
 ---
 
 I googled `hoare partition quicksort javascript` and tested the implementation of the top three results. To validate correctness, I used LeetCode's [Sorting](https://leetcode.com/problems/sort-an-array/) test suite.

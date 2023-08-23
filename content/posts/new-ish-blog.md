@@ -2,6 +2,7 @@
 title: "New-ish Blog"
 date: 2023-08-20
 tags: ["programming", "personal"]
+summary: "In the last two years, I've stopped programming in my free time. I was burnt out from four years of night classes and a full-time software engineering job. But my inspiration came back! It felt like it came out of nowhere, but it wasn't random."
 ---
 
 In the last two years, I've stopped programming in my free time. I was burnt out from four years of night classes and a full-time software engineering job. But my inspiration came back! It felt like it came out of nowhere, but it wasn't random. I've taken good care of myself and have enough balance in my personal life to start a new project. I began researching DNS, networks, etc and here we are. 

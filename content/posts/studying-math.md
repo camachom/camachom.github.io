@@ -2,6 +2,7 @@
 title: "Going back to school in my late 20s"
 date: 2020-06-11
 tags: ["math"]
+summary: "After attending a coding bootcamp, I wanted to go back to school. But why? Am I not a great example of how traditional education has failed to catch on to industry needs?"
 ---
 
 ## Reasoning
