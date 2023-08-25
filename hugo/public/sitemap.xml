@@ -38,10 +38,10 @@
     <loc>https://me.vs.computer/posts/studying-math/</loc>
     <lastmod>2020-06-11T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://me.vs.computer/about/about/</loc>
-  </url><url>
     <loc>https://me.vs.computer/about/</loc>
   </url><url>
-    <loc>https://me.vs.computer/categories/</loc>
+    <loc>https://me.vs.computer/about/about/</loc>
+  </url><url>
+    <loc>https://me.vs.computer/series/</loc>
   </url>
 </urlset>
