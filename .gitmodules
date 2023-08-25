@@ -1,4 +1,6 @@
-[submodule "themes/poison"]
-	path = themes/poison
+[submodule "remark42"]
+	path = remark42
+	url = git@github.com:camachom/remark42.git
+[submodule "hugo/themes/poison"]
+	path = hugo/themes/poison
 	url = git@github.com:camachom/poison.git
-	branch = master

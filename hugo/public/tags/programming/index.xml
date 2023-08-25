@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>programming on Martin Camacho</title>
+    <link>https://me.vs.computer/tags/programming/</link>
+    <description>Recent content in programming on Martin Camacho</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 20 Aug 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://me.vs.computer/tags/programming/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New-ish Blog</title>
+      <link>https://me.vs.computer/posts/new-ish-blog/</link>
+      <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://me.vs.computer/posts/new-ish-blog/</guid>
+      <description>In the last two years, I&amp;rsquo;ve stopped programming in my free time. I was burnt out from four years of night classes and a full-time software engineering job. But my inspiration came back! It felt like it came out of nowhere, but it wasn&amp;rsquo;t random.</description>
+    </item>
+    
+    <item>
+      <title>Copy pasting quicksort</title>
+      <link>https://me.vs.computer/posts/quicksort/</link>
+      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://me.vs.computer/posts/quicksort/</guid>
+      <description>I googled &lt;code&gt;hoare partition quicksort javascript&lt;/code&gt; and tested the implementation of the top three results. To validate correctness, I used LeetCode&amp;rsquo;s &lt;a href=&#34;https://leetcode.com/problems/sort-an-array/&#34; target=&#34;_blank&#34;&gt;Sorting&lt;/a&gt;
+ test suite.</description>
+    </item>
+    
+  </channel>
+</rss>
