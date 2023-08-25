@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>chess on </title>
-    <link>https://me.vs.computer/tags/chess/</link>
+    <link>http://localhost/tags/chess/</link>
     <description>Recent content in chess on </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://me.vs.computer/tags/chess/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 11 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost/tags/chess/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>How I Made $16.67 Playing Chess Online</title>
-      <link>https://me.vs.computer/posts/playing-chess-during-lockdown/</link>
+      <link>http://localhost/posts/playing-chess-during-lockdown/</link>
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://me.vs.computer/posts/playing-chess-during-lockdown/</guid>
+      <guid>http://localhost/posts/playing-chess-during-lockdown/</guid>
       <description>I started studying seriously, and playing for at least four hours a day on Chess.com.</description>
     </item>
     
