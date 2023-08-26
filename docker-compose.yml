@@ -31,14 +31,16 @@ services:
         max-file: "5"
 
     # uncomment to expose directly (no proxy)
-    #ports:
-    #  - "80:8080"
-    #  - "443:8443"
+    # ports:
+    #   - "8080:8080"
+    #   - "443:8443"
 
     environment:
-      - REMARK_URL=http://remark42.localhost
+      - REMARK_URL=http://remark42:8080
       - SECRET="super secret"
       - DEBUG=true
+      - SITE=localhost
+      - AUTH_ANON=true
       # - AUTH_GOOGLE_CID
       # - AUTH_GOOGLE_CSEC
       # - AUTH_GITHUB_CID
