@@ -1,13 +1,13 @@
 version: "2"
 
 services:
-  hugo:
-    image: klakegg/hugo:0.101.0-alpine
-    container_name: "hugo"
-    hostname: "hugo"
-    volumes:
-      - ./hugo:/src:rw
-      - ./hugo/public:/target
+  # hugo:
+  #   image: klakegg/hugo:0.101.0-alpine
+  #   container_name: "hugo"
+  #   hostname: "hugo"
+  #   volumes:
+  #     - ./hugo:/src:rw
+  #     - ./hugo/public:/target
   remark:
     image: umputun/remark42:latest
     container_name: "remark42"
@@ -35,9 +35,9 @@ services:
     volumes:
       - reviews:/srv/var
     depends_on:
-      - hugo
+      - nginx
   nginx:
-    image: nginx:alpine
+    build: ./hugo/
     container_name: "nginx"
     hostname: "nginx"
     restart: always
@@ -45,9 +45,5 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./hugo/public:/usr/share/nginx/html/
-    depends_on:
-      - hugo
-      - remark
 volumes:
   reviews:
