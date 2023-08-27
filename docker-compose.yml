@@ -6,8 +6,8 @@ services:
     container_name: "hugo"
     hostname: "hugo"
     volumes:
-      - ./hugo:/src
-      - static-content:/target
+      - ./hugo:/src:rw
+      - ./hugo/public:/target:rw
   remark:
     image: umputun/remark42:latest
     container_name: "remark42"
@@ -44,11 +44,10 @@ services:
     ports:
       - "80:80"
     volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - static-content:/usr/share/nginx/html/
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./hugo/public:/usr/share/nginx/html/:ro
     depends_on:
       - hugo
       - remark
 volumes:
-  static-content:
   reviews:
