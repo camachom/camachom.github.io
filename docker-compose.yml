@@ -7,7 +7,7 @@ services:
     hostname: "hugo"
     volumes:
       - ./hugo:/src:rw
-      - ./hugo/public:/target:rw
+      - ./hugo/public:/target
   remark:
     image: umputun/remark42:latest
     container_name: "remark42"
