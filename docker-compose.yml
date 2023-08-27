@@ -34,8 +34,6 @@ services:
       # - ADMIN_PASSWD=<your secret password>
     volumes:
       - reviews:/srv/var
-    depends_on:
-      - nginx
   nginx:
     build: ./hugo/
     container_name: "nginx"
@@ -45,5 +43,8 @@ services:
       - "80:80"
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - remark
+
 volumes:
   reviews:
