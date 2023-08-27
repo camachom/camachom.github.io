@@ -41,7 +41,6 @@ services:
     container_name: "nginx"
     hostname: "nginx"
     restart: always
-    command: chown nginx:nginx /usr/share/nginx/html/*
     ports:
       - "80:80"
     volumes:
