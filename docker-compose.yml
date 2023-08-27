@@ -50,5 +50,4 @@ services:
       - hugo
       - remark
 volumes:
-  static-content:
   reviews:
