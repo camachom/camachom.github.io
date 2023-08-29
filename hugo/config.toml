@@ -1,9 +1,9 @@
-# baseURL = "http://localhost"
-baseURL = "http://ec2-54-183-163-171.us-west-1.compute.amazonaws.com"
+baseURL = "http://localhost"
+# baseURL = "http://ec2-54-183-163-171.us-west-1.compute.amazonaws.com"
 languageCode = "en-us"
 theme = "poison"
 paginate = 10
-pluralizelisttitles = false                                           # removes the automatically appended "s" on sidebar entries
+pluralizelisttitles = false # removes the automatically appended "s" on sidebar entries
 
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
 # disqusShortname = "yourDisqusShortname"
