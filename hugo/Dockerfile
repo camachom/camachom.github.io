@@ -1,5 +1,5 @@
-FROM klakegg/hugo:0.101.0-alpine-onbuild AS hugo
+FROM klakegg/hugo:onbuild AS hugo
 
 FROM nginx:alpine
-COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=hugo  /target /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/nginx.conf
