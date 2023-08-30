@@ -1,13 +1,13 @@
 version: "2"
 
 services:
-  # hugo:
-  #   image: klakegg/hugo:0.101.0-alpine
-  #   container_name: "hugo"
-  #   hostname: "hugo"
-  #   volumes:
-  #     - ./hugo:/src:rw
-  #     - ./hugo/public:/target
+  hugo:
+    image: klakegg/hugo:0.101.0-alpine
+    container_name: "hugo"
+    hostname: "hugo"
+    volumes:
+      - ./hugo:/src:rw
+      - ./hugo/public:/target
   remark:
     image: umputun/remark42:latest
     container_name: "remark42"
@@ -34,15 +34,15 @@ services:
       # - ADMIN_PASSWD=<your secret password>
     volumes:
       - reviews:/srv/var
-  nginx:
-    build: ./hugo/
-    container_name: "nginx"
-    hostname: "nginx"
-    restart: always
-    ports:
-      - "80:80"
-    depends_on:
-      - remark
+  # nginx:
+  #   build: ./hugo/
+  #   container_name: "nginx"
+  #   hostname: "nginx"
+  #   restart: always
+  #   ports:
+  #     - "80:80"
+  #   depends_on:
+  #     - remark
 
 volumes:
   reviews:
