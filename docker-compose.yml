@@ -22,7 +22,7 @@ services:
       - REMARK_URL=http://remark42:8080
       - SECRET="super secret"
       - DEBUG=true
-      - SITE=localhost
+      - SITE=remark42
       - AUTH_ANON=true
       # - AUTH_GOOGLE_CID
       # - AUTH_GOOGLE_CSEC
