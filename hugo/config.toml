@@ -86,7 +86,7 @@ code_background_color_dark = "#393D47" # default is #393D47
 # NOTE: If using Remark42 as commenting engine, uncomment and configure these lines
 remark42 = true
 remark42_host = "http://remark42.vs.computer"
-remark42_site_id = "remark42.vs"
+remark42_site_id = "remark"
 
 # NOTE: The following three params are optional and are used to create meta tags + enhance SEO.
 # og_image = ""                       # path to social icon - front matter: image takes precedent, then og_image, then brand_url
