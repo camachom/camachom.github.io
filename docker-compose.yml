@@ -20,9 +20,9 @@ services:
         max-file: "5"
     environment:
       - REMARK_URL=http://remark42:8080
-      - SECRET="super secret"
+      - SECRET="super-secret-code"
       - DEBUG=true
-      - SITE_ID=remark42.vs
+      - SITE_ID="remark42.vs"
       - AUTH_ANON=true
       # - AUTH_GOOGLE_CID
       # - AUTH_GOOGLE_CSEC
