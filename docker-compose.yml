@@ -40,9 +40,7 @@ services:
       - /etc/letsencrypt/live/:/etc/letsencrypt/live/
     depends_on:
       remark:
-        condition: service_started
-      certbot:
-        condition: service_completed_successfully
+        condition: service_healthy
 
 volumes:
   reviews:
