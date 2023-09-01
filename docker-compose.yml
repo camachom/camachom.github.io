@@ -17,6 +17,7 @@ services:
       - DEBUG=true
       - SITE_ID=remark
       - AUTH_ANON=true
+      - ADMIN_PASSWD=temp
     volumes:
       - reviews:/srv/var
   nginx:
