@@ -42,15 +42,15 @@ services:
     depends_on:
       remark:
         condition: service_started
-      # certbot:
-      #   condition: service_completed_successfully
-      # certbot:
-      #   image: certbot/certbot
-      #   container_name: certbot
-      #   volumes:
-      #     - ./certbot/conf:/etc/letsencrypt
-      #     - ./certbot/www:/var/www/certbot
-      #   command: certonly --webroot -w /var/www/certbot --force-renewal --email camachom@fastmail.com -d me.vs.computer -d remark42.vs.computer --agree-tos --non-interactive
+    certbot:
+      condition: service_completed_successfully
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email camachom@fastmail.com -d me.vs.computer -d remark42.vs.computer --agree-tos --non-interactive
 
 volumes:
   reviews:
