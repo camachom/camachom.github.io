@@ -23,7 +23,6 @@ services:
     build: ./hugo/
     container_name: "nginx"
     hostname: "nginx"
-    restart: always
     ports:
       - "80:80"
       - "443:443"
