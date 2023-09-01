@@ -17,14 +17,6 @@ services:
       - DEBUG=true
       - SITE_ID=remark
       - AUTH_ANON=true
-      # - AUTH_GOOGLE_CID
-      # - AUTH_GOOGLE_CSEC
-      # - AUTH_GITHUB_CID
-      # - AUTH_GITHUB_CSEC
-      # Enable it only for the initial comment import or for manual backups.
-      # Do not leave the server running with the ADMIN_PASSWD set if you don't have an intention
-      # to keep creating backups manually!
-      # - ADMIN_PASSWD=<your secret password>
     volumes:
       - reviews:/srv/var
   nginx:

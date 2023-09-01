@@ -1,9 +1,9 @@
 # baseURL = "http://localhost"
-baseURL = "http://me.vs.computer/"
+baseURL = "https://me.vs.computer/"
 languageCode = "en-us"
 theme = "poison"
 paginate = 10
-pluralizelisttitles = false        # removes the automatically appended "s" on sidebar entries
+pluralizelisttitles = false         # removes the automatically appended "s" on sidebar entries
 
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
 # disqusShortname = "yourDisqusShortname"
@@ -85,7 +85,7 @@ code_background_color_dark = "#393D47" # default is #393D47
 
 # NOTE: If using Remark42 as commenting engine, uncomment and configure these lines
 remark42 = true
-remark42_host = "http://remark42.vs.computer"
+remark42_host = "https://remark42.vs.computer"
 remark42_site_id = "remark"
 
 # NOTE: The following three params are optional and are used to create meta tags + enhance SEO.
