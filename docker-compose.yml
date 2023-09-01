@@ -13,11 +13,13 @@ services:
         max-file: "5"
     environment:
       - REMARK_URL=https://remark42.vs.computer
-      - SECRET=super-secret-code
       - DEBUG=true
       - SITE_ID=remark
       - AUTH_ANON=true
-      - ADMIN_PASSWD=temp
+      - EMOJI=true
+      - SECRET=/run/secrets/secret
+      - AUTH_GITHUB_CID=7a9e6043085adde1be83
+      - AUTH_GITHUB_CSEC=/run/secrets/auth_github_csec
     volumes:
       - reviews:/srv/var
   nginx:
@@ -36,6 +38,12 @@ services:
     depends_on:
       remark:
         condition: service_healthy
+
+secrets:
+  auth_github_csec:
+    file: ./.secrets/github_client_secret.txt
+  secret:
+    file: ./.secrets/secret.txt
 
 volumes:
   reviews:

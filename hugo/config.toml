@@ -28,19 +28,7 @@ menu = [
 
 # Links to your socials.  Comment or delete any you don't need/use. 
 github_url = "https://github.com/camachom"
-# gitlab_url = "https://gitlab.com"
 linkedin_url = "https://linkedin.com/in/camachomartin"
-# twitter_url = "https://twitter.com"
-# mastodon_url = "https://mastodon.social"
-# tryhackme_url = "https://tryhackme.com"
-# discord_url = "https://discord.com"
-# youtube_url = "https://youtube.com"
-# instagram_url = "https://instagram.com"
-# facebook_url = "https://facebook.com"
-# flickr_url = "https://flickr.com"
-# telegram_url = "https://telegram.org"
-# matrix_url = "https://matrix.org"
-# xmpp_url = "https://xmpp.org"
 email_url = "mailto:camachom@fastmail.com"
 
 # NOTE: If you don't want to use RSS, comment or delete the following lines
