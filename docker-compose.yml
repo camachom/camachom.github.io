@@ -12,7 +12,7 @@ services:
         max-size: "10m"
         max-file: "5"
     environment:
-      - REMARK_URL=http://remark42:8080
+      - REMARK_URL=https://remark42.vs.computer
       - SECRET=super-secret-code
       - DEBUG=true
       - SITE_ID=remark
