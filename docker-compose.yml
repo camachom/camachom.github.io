@@ -42,8 +42,8 @@ services:
     depends_on:
       remark:
         condition: service_started
-    certbot:
-      condition: service_completed_successfully
+      certbot:
+        condition: service_completed_successfully
   certbot:
     image: certbot/certbot
     container_name: certbot
