@@ -9,7 +9,6 @@ pluralizelisttitles = false        # removes the automatically appended "s" on s
 # disqusShortname = "yourDisqusShortname"
 
 [params]
-enableGitInfo = true
 brand = "Martin Camacho"  # name of your site - appears in the sidebar
 brand_image = "/luna.jpg" # path to the image shown in the sidebar
 # description = "-rxw"      # Used as default meta description if not specified in front matter
@@ -87,6 +86,3 @@ remark42_site_id = "remark"
 [taxonomies]
 series = 'series'
 tags = 'tags'
-
-[frontmatter]
-lastmod = ["lastmod", ":git", "date", "publishDate"]
