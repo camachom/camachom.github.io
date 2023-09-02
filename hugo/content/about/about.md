@@ -1,6 +1,6 @@
 ---
-title: "About me"
+title: "About"
 draft: false
 ---
 
-its not working
+I'm a software engineer in Oakland, CA working for (Buildzoom)[https://www.buildzoom.com].
