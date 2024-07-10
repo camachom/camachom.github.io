@@ -2,7 +2,6 @@ baseURL = "https://me.vs.computer"
 languageCode = "en-us"
 theme = "poison"
 paginate = 10
-title = "TEST"
 pluralizelisttitles = false        # removes the automatically appended "s" on sidebar entries
 
 # NOTE: If using Disqus as commenting engine, uncomment and configure this line
