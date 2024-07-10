@@ -1,4 +1,3 @@
-baseURL = "https://me.vs.computer"
 languageCode = "en-us"
 theme = "poison"
 paginate = 10
