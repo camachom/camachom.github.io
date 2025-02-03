@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title></title>
-    <link>http://localhost:1313/</link>
+    <link>https://me.vs.computer/</link>
     <description>Recent content on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://me.vs.computer/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Deceptively Simple System of Equations</title>
-      <link>http://localhost:1313/posts/deceptively-simple-equations/</link>
+      <link>https://me.vs.computer/posts/deceptively-simple-equations/</link>
       <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/deceptively-simple-equations/</guid>
+      <guid>https://me.vs.computer/posts/deceptively-simple-equations/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m currently taking Differential Equations, and I have never felt more mathy. That doesn&amp;rsquo;t mean I don&amp;rsquo;t occasionally get stuck on simple algebra. Consider these equations from a homework problem:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;2a_{2} + 3a_{1}x + 4a_{0} = 0&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;a_{2} + a_{1} + a_{0} = 1&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\text{where } a_{0}, a_{1}, a_{2} \text{ are constants}&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;System of equations are introduced in high school, so I&amp;rsquo;ve solved tons of these problems before using the &lt;a href=&#34;https://www.khanacademy.org/math/algebra-home/alg-system-of-equations/alg-equivalent-systems-of-equations/v/solving-systems-of-equations-by-elimination&#34;&gt;elimination technique&lt;/a&gt; (I don&amp;rsquo;t know any Linear Algebra yet).&lt;/p&gt;</description>
     </item>
     <item>
       <title>How I Made $16.67 Playing Chess Online</title>
-      <link>http://localhost:1313/posts/playing-chess-during-lockdown/</link>
+      <link>https://me.vs.computer/posts/playing-chess-during-lockdown/</link>
       <pubDate>Tue, 11 Aug 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/playing-chess-during-lockdown/</guid>
+      <guid>https://me.vs.computer/posts/playing-chess-during-lockdown/</guid>
       <description>I started studying seriously, and playing for at least four hours a day on Chess.com.</description>
     </item>
     <item>
       <title>Going back to school in my late 20s</title>
-      <link>http://localhost:1313/posts/studying-math/</link>
+      <link>https://me.vs.computer/posts/studying-math/</link>
       <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/studying-math/</guid>
+      <guid>https://me.vs.computer/posts/studying-math/</guid>
       <description>After attending a coding bootcamp, I wanted to go back to school. But why? Am I not a great example of how traditional education has failed to catch on to industry needs?</description>
     </item>
   </channel>
