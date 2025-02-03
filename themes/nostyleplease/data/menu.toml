@@ -1,0 +1,19 @@
+[[entries]]
+title = "info"
+
+  [[entries.entries]]
+  title = "my name is martin, and I'm a software engineer"
+
+  [[entries.entries]]
+  title = "github"
+  url = "https://github.com/camacho"
+
+
+[[entries]]
+title = "all posts"
+
+  [entries.post_list]
+  limit = 5
+  show_more = true
+  show_more_text = "See archive..."
+  show_more_url = "posts"
