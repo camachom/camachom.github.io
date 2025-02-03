@@ -6,35 +6,14 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 02 Sep 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>From Github Pages To EC2</title>
-      <link>http://localhost:1313/posts/moving-to-aws/</link>
-      <pubDate>Sat, 02 Sep 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/moving-to-aws/</guid>
-      <description>Visiting my blog now makes me a lot happier even though I&amp;rsquo;m rendering the exact same thing.</description>
-    </item>
-    <item>
-      <title>New-ish Blog</title>
-      <link>http://localhost:1313/posts/new-ish-blog/</link>
-      <pubDate>Sun, 20 Aug 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/new-ish-blog/</guid>
-      <description>In the last two years, I&amp;rsquo;ve stopped programming in my free time. I was burnt out from four years of night classes and a full-time software engineering job. But my inspiration came back! It felt like it came out of nowhere, but it wasn&amp;rsquo;t random.</description>
-    </item>
-    <item>
-      <title>Copy pasting quicksort</title>
-      <link>http://localhost:1313/posts/quicksort/</link>
-      <pubDate>Mon, 15 Mar 2021 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/quicksort/</guid>
-      <description>I googled &lt;code&gt;hoare partition quicksort javascript&lt;/code&gt; and tested the implementation of the top three results. To validate correctness, I used LeetCode&amp;rsquo;s &lt;a href=&#34;https://leetcode.com/problems/sort-an-array/&#34; target=&#34;_blank&#34;&gt;Sorting&lt;/a&gt; test suite.</description>
-    </item>
     <item>
       <title>Deceptively Simple System of Equations</title>
       <link>http://localhost:1313/posts/deceptively-simple-equations/</link>
       <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/deceptively-simple-equations/</guid>
-      <description>I&amp;rsquo;m currently taking Differential Equations, and I have never felt more mathy. That doesn&amp;rsquo;t mean I don&amp;rsquo;t occasionally get stuck on simple algebra. Consider these equations from a homework problem:&#xA;$$ 2a_{2} + 3a_{1}x + 4a_{0} = 0 $$&#xA;$$ a_{2} + a_{1} + a_{0} = 1 $$</description>
+      <description>I&amp;rsquo;m currently taking Differential Equations, and I have never felt more mathy. That doesn&amp;rsquo;t mean I don&amp;rsquo;t occasionally get stuck on simple algebra. Consider these equations from a homework problem:&#xA;$$ 2a_{2} + 3a_{1}x + 4a_{0} = 0 $$&#xA;$$ a_{2} + a_{1} + a_{0} = 1 $$&#xA;$$ \text{where } a_{0}, a_{1}, a_{2} \text{ are constants} $$&#xA;System of equations are introduced in high school, so I&amp;rsquo;ve solved tons of these problems before using the elimination technique (I don&amp;rsquo;t know any Linear Algebra yet).</description>
     </item>
     <item>
       <title>How I Made $16.67 Playing Chess Online</title>

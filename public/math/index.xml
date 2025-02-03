@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Maths on </title>
+    <link>http://localhost:1313/math/</link>
+    <description>Recent content in Maths on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 02 Sep 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/math/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Deceptively Simple System of Equations</title>
+      <link>http://localhost:1313/math/deceptively-simple-equations/</link>
+      <pubDate>Wed, 02 Sep 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/math/deceptively-simple-equations/</guid>
+      <description>I&amp;rsquo;m currently taking Differential Equations, and I have never felt more mathy. That doesn&amp;rsquo;t mean I don&amp;rsquo;t occasionally get stuck on simple algebra. Consider these equations from a homework problem:&#xA;$$ 2a_{2} + 3a_{1}x + 4a_{0} = 0 $$&#xA;$$ a_{2} + a_{1} + a_{0} = 1 $$&#xA;$$ \text{where } a_{0}, a_{1}, a_{2} \text{ are constants} $$&#xA;System of equations are introduced in high school, so I&amp;rsquo;ve solved tons of these problems before using the elimination technique (I don&amp;rsquo;t know any Linear Algebra yet).</description>
+    </item>
+  </channel>
+</rss>
