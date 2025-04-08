@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Math on </title>
-    <link>//localhost:1313/tags/math/</link>
+    <link>/tags/math/</link>
     <description>Recent content in Math on </description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Thu, 11 Jun 2020 00:00:00 +0000</lastBuildDate>
-    <atom:link href="//localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Going back to school in my late 20s</title>
-      <link>//localhost:1313/posts/studying-math/</link>
+      <link>/posts/studying-math/</link>
       <pubDate>Thu, 11 Jun 2020 00:00:00 +0000</pubDate>
-      <guid>//localhost:1313/posts/studying-math/</guid>
+      <guid>/posts/studying-math/</guid>
       <description>After attending a coding bootcamp, I wanted to go back to school. But why? Am I not a great example of how traditional education has failed to catch on to industry needs?</description>
     </item>
   </channel>
