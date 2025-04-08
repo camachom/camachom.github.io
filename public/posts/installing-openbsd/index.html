@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+   <meta name="description" content="I’ll save you some time: just read the official documentation. I did it the hard way—starting with ChatGPT for instructions, and then diving into blog posts for solutions when things went wrong.
+When I plugged the SD card with miniroot76.img into my Raspberry Pi, I’d briefly see the OpenBSD BOOTAA64 boot&gt; prompt, only to have the screen go blank seconds later.
+I attempted:
+
+Modifying config.txt in the boot partition to force safe HDMI configuration
+Using an older version of OpenBSD. The oldest I could find was 7.0
+Changing the boot order so that I could use a USB stick instead of an SD card
+Using the full installation image (install76.img ) instead of miniroot76.img
+
+Nothing worked. I knew using the serial console was a possibility, but I did not have the cable. The installation instructions I found online kept getting more unhinged. When I landed on an 18 step guide requiring two USB sticks and an SD card, I knew it was time to throw in the towel. Luckily I had a NUC to use instead.">  
+
+  <title>
+    
+      Installing OpenBSD 7.6 on a Raspberry Pi 4?
+    
+  </title>
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/" />
+  
+  
+  
+  <link rel="stylesheet" href="//localhost:1313/css/main.900100e9dbee2d56c58fac8bb717037cae7e26a9c36c29d2ff587bdd65f0cbbe510b41d81a3bb234919cdfdc7550d786b2fab70c8fc507772d732fe097106d12.css" integrity="sha512-kAEA6dvuLVbFj6yLtxcDfK5&#43;JqnDbCnS/1h73WXwy75RC0HYGjuyNJGc39x1UNeGsvq3DI/FB3ctcy/glxBtEg==" />
+  
+</head>
+<body a="light">
+        <main class="page-content" aria-label="Content">
+            <div class="w">
+                <div class="post-meta">
+                    <a href="/">..</a>
+
+                    <p>
+                        <time datetime="2025-04-08 00:00:00 &#43;0000 UTC">
+                            2025-04-08
+                        </time>
+                    </p>
+                </div>
+
+<article>
+    <h1>Installing OpenBSD 7.6 on a Raspberry Pi 4?</h1>
+
+    
+
+    <p>I’ll save you some time: just read the official documentation. I did it the hard way—starting with ChatGPT for instructions, and then diving into blog posts for solutions when things went wrong.</p>
+<p>When I plugged the SD card with <code>miniroot76.img</code> into my Raspberry Pi, I’d briefly see the <code>OpenBSD BOOTAA64 boot&gt;</code> prompt, only to have the screen go blank seconds later.</p>
+<p>I attempted:</p>
+<ul>
+<li>Modifying <code>config.txt</code> in the boot partition to force safe HDMI configuration</li>
+<li>Using an older version of OpenBSD. The oldest I could find was 7.0</li>
+<li>Changing the boot order so that I could use a USB stick instead of an SD card</li>
+<li>Using the full installation image (<code>install76.img </code>) instead of <code>miniroot76.img</code></li>
+</ul>
+<p>Nothing worked. I knew using the serial console was a possibility, but I did not have the cable. The installation instructions I found online kept getting more unhinged. When I landed on an <a href="https://www.reddit.com/r/raspberry_pi/comments/1jtpmgh/installing_openbsd_76_on_raspberry_4b_rpi4_guide/">18 step guide</a> requiring two USB sticks and an SD card, I knew it was time to throw in the towel. Luckily I had a NUC to use instead.</p>
+<p>In case you still want to use a Pi, the <a href="https://ftp.openbsd.org/pub/OpenBSD/7.6/arm64/INSTALL.arm64">official installation instructions</a> has the answer. Under <code>Install on Raspberry Pi:</code>:</p>
+<blockquote>
+<p>&hellip;note that once the kernel has started running, by default you
+will only see output on the serial console. To switch to displaying on
+the monitor instead, watch for the OpenBSD BOOTAA64 &ldquo;boot&gt;&rdquo; prompt,
+and type &ldquo;set tty fb0&rdquo;.</p></blockquote>
+<p>Problem solved.</p>
+
+</article>
+
+            </div>
+        </main>
+    </body></html>
