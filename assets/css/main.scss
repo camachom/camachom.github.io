@@ -58,17 +58,7 @@
   }
 }
 
-@mixin dark-appearance {
-  @include theme(#000000, #ffffff, #000000, #79a8ff, #f78fe7, #2f3849);
-}
-
-@mixin light-appearance {
-  @include theme(#ffffff, #000000, #595959, #3548cf, #8f0075, #dae5ec);
-}
-
-body[a="dark"] {
-  @include dark-appearance;
-
+@mixin dark-theme-extras {
   background-color: #1e1e1e;
   color: #e3e3e3;
 
@@ -114,9 +104,7 @@ body[a="dark"] {
   }
 }
 
-body[a="light"] {
-  @include light-appearance;
-
+@mixin light-theme-extras {
   background-color: #ffffff;
   color: #24292f;
 
@@ -162,35 +150,33 @@ body[a="light"] {
   }
 }
 
+@mixin dark-appearance {
+  @include theme(#000000, #ffffff, #000000, #79a8ff, #f78fe7, #2f3849);
+  @include dark-theme-extras;
+}
+
+@mixin light-appearance {
+  @include theme(#ffffff, #000000, #595959, #3548cf, #8f0075, #dae5ec);
+  @include light-theme-extras;
+}
+
+body[a="dark"] {
+  @include dark-appearance;
+}
+
+body[a="light"] {
+  @include light-appearance;
+}
+
 @media (prefers-color-scheme: dark) {
   body[a="auto"] {
     @include dark-appearance;
-  }
-
-  body[a="auto"] code:not(pre > code) {
-    background-color: #2e2e2e;
-    color: #dddddd;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.95em;
-    font-family: monospace;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
   }
 }
 
 @media (prefers-color-scheme: light) {
   body[a="auto"] {
     @include light-appearance;
-  }
-
-  body[a="auto"] code:not(pre > code) {
-    background-color: #f6f8fa;
-    color: #24292f;
-    padding: 0.2em 0.4em;
-    border-radius: 4px;
-    font-size: 0.95em;
-    font-family: monospace;
-    box-shadow: inset 0 0 0 1px rgba(27, 31, 35, 0.06);
   }
 }
 
