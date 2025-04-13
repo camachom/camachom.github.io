@@ -11,6 +11,7 @@ theme = "hugo-theme-nostyleplease"
   favicon = "favicon.ico"
 
   [params.theme_config]
+    appearance        = "light"
     back_home_text    = ".."
     date_format       = "2006-01-02"
     isListGroupByDate = false
