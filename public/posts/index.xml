@@ -6,8 +6,15 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 08 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 12 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Me vs AI</title>
+      <link>//localhost:1313/posts/me-vs-ai/</link>
+      <pubDate>Fri, 12 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/me-vs-ai/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;ve been heistatant to look into AI.&lt;/p&gt;&#xA;&lt;p&gt;I use it every day to code but I treat it as a black box. I don&amp;rsquo;t have a good understanding of whats going on under the hood and haven&amp;rsquo;t needed to. You can get by downlaoding Cursor and asking ChatGPT whatever you need.&lt;/p&gt;&#xA;&lt;p&gt;Hoever, I&amp;rsquo;m at a crossroads. After five years at BuildZoom, I&amp;rsquo;m looking for a new job. Understanding Machine Learning is now a default rquirement just like being able to write a SQL query or sort an array.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Installing OpenBSD 7.6 on a Raspberry Pi 4?</title>
       <link>//localhost:1313/posts/installing-openbsd/</link>
