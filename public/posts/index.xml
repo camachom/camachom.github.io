@@ -6,14 +6,28 @@
     <description>Recent content in Posts on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 07 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 12 Jan 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>System design: rate limiter</title>
+      <link>//localhost:1313/posts/rate-limiter-system-design/</link>
+      <pubDate>Mon, 12 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/rate-limiter-system-design/</guid>
+      <description>&lt;p&gt;Like a lot of system design exercises, most engineers don’t actually build rate limiters at work. Most companies rely on off-the-shelf solutions they’re already using—Cloudflare, NGINX, etc. Still, rate limiting is a foundational concept for web developers and a classic system design problem.&lt;/p&gt;&#xA;&lt;p&gt;The &lt;a href=&#34;https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter&#34;&gt;ByteByteGo write-up&lt;/a&gt; is helpful, but I don&amp;rsquo;t retain much by just reading. Instead, after getting comfortable with the high-level ideas, I used Claude to build a toy rate limiter.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Learning gradient descent</title>
       <link>//localhost:1313/posts/what-to-optimize/</link>
       <pubDate>Wed, 07 Jan 2026 00:00:00 +0000</pubDate>
       <guid>//localhost:1313/posts/what-to-optimize/</guid>
       <description>&lt;p&gt;Being unemployed feels a lot like working at an early-stage startup: limited resources, a short runway, and a clear goal (hopefully). The question is how you get there.&lt;/p&gt;&#xA;&lt;p&gt;You prioritize.&lt;/p&gt;&#xA;&lt;p&gt;So why spend time learning gradient descent? At first glance, it feels wasteful. I can already build features using Claude’s APIs. No one expects me to train transformers from scratch—I’m not competing for ML roles.&lt;/p&gt;&#xA;&lt;p&gt;The point isn’t mastery; it’s fluency.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Detecting drum hits</title>
+      <link>//localhost:1313/posts/detecting-drum-hits/</link>
+      <pubDate>Sun, 14 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/detecting-drum-hits/</guid>
+      <description>&lt;p&gt;The building blocks of drumming are rudiments much like scales are to any melodic instrument. A simple but clean single stroke roll can make you sound like a pro. What is the best way to practice rudiments?&lt;/p&gt;&#xA;&lt;p&gt;A metronome. There are apps that provide visual feedback for every hit (&amp;ldquo;am i lagging, rushing or on the beat?&amp;rdquo;) so you can adjust accordingly while practicing. I decided to build my own.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Gut feeling</title>

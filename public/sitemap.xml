@@ -2,11 +2,17 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>//localhost:1313/posts/</loc>
+    <lastmod>2026-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>//localhost:1313/posts/rate-limiter-system-design/</loc>
+    <lastmod>2026-01-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>//localhost:1313/posts/what-to-optimize/</loc>
     <lastmod>2026-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>//localhost:1313/posts/</loc>
-    <lastmod>2026-01-07T00:00:00+00:00</lastmod>
+    <loc>//localhost:1313/posts/detecting-drum-hits/</loc>
+    <lastmod>2025-12-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>//localhost:1313/posts/gut-feeling/</loc>
     <lastmod>2025-12-14T00:00:00+00:00</lastmod>
