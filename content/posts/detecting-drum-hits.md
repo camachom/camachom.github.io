@@ -9,41 +9,67 @@ I normally practice with a metronome but you can get more sophisticated. There a
 
 **Goal: Extract hit times and amplitudes from a drum recording.**
 
-How accurate are conventional methods? The idea is to do my own classification (is it a ghost note, accent note, etc.) without AI and see how it performs. I'll add more sophistication with v1. 
+How accurate are conventional methods? The idea is to do my own classification (is it a ghost note, accent note, etc.) without AI and see how it performs. I'll add more sophistication in v1. 
 
 For now, the script will analyze a file. The use case requires real-time analysis but it's unnecessary at the moment. Here is the [github repo](https://github.com/camachom/drum-dynamics) and a simple skeleton:
 
 ### Preprocessing audio:
-1. [load_audio](https://github.com/camachom/drum-dynamics/blob/main/dynamics.py#L25) - get samples into numpy array
-2. [compute_envelope](https://github.com/camachom/drum-dynamics/blob/main/dynamics.py#L25) - smooth the signal
+1. load_audio - get samples into `numpy` array
+2. compute_envelope - smooth the signal
 
 ### Hit detection:
-3. [detect_onsets](https://github.com/camachom/drum-dynamics/blob/main/dynamics.py#L79) - find where hits occur
-4. [measure_hits](https://github.com/camachom/drum-dynamics/blob/main/dynamics.py#L114) - get amplitude at each hit
+3. detect_onsets - find where hits occur
+4. measure_hits - get amplitude at each hit
 
 ### Analysis:
-5. [classify_dynamics](https://github.com/camachom/drum-dynamics/blob/main/dynamics.py#L155) - what type of his is it? 
+5. classify_dynamics - classify each hit as either ghost, normal or accent 
 
 ---
 
-After some trial and error, the script works well:
+After some trial and error, the script works okay. Here are the samples I was testing with. They're not ideal but I needed something to make sure the basics work. Even without listening to the sample, the charts below aligns with the wave:
+
+https://freesound.org/people/George_Papargyris/sounds/837177/
+![normal drum loop](/files/normal.png)
 
 ```sh
 Classified dynamics:
-  time / amplitude (normalized) / classification 
+  0.000s: 1.0000 (normal)
   0.464s: 0.9101 (normal)
   0.952s: 1.0000 (normal)
   1.463s: 0.8162 (normal)
-  ...
 ```
 
-First, let's define an `envelope`. Raw audio signals are jagged because recordings are describing a wave at a specific interval (like 44.1 kHz). It's not continuous:
+https://freesound.org/people/Stereo%20Surgeon/sounds/266093/
+![variant drum loop](/files/variant.png)
+
+```sh
+Classified dynamics:
+  0.523s: 1.0000 (accent)
+  0.896s: 0.6536 (normal)
+  1.216s: 0.7281 (accent)
+  1.525s: 0.6003 (normal)
+  1.845s: 0.4840 (normal)
+  2.144s: 0.4746 (ghost)
+  2.464s: 0.4559 (ghost)
+```
+
+First, let's define an `envelope`. Raw audio signals are jagged--falling and raising chaotically since they're recorded at specific intervals (like 44.1 kHz). The goal is to compressing subsets of samples into a single value to generate a smooth, estimated curve. Hits will be much easier to detect without so much noise (pun intended). Here is the general idea (although not an actual plot of an envelope): 
 
 ![Wave plot showing raw audio signal](/files/wave.png)
 
-The rectangles are individual samples and the blue curve is what the envelope is trying to achieve.
+The rectangles are individual samples and the blue curve is what the envelope is trying to achieve. I computed the envelope using [RMS windowing](https://en.wikipedia.org/wiki/Root_mean_square) as suggested by Claude:
 
-In order to detect a `hit`, I defined a threshold:
+```python
+    for i in range(0, len(samples) - window_size, window_size):
+        window = samples[i:i + window_size]
+
+        index = i // window_size
+        envelope[index] = np.sqrt(np.mean(window**2))
+```
+
+It's important to remember that loudness in this case is measured as displacement from 0. An amplitude of -65536 is just as loud as 65536, so squaring is perfectly safe. 
+
+In order to detect a `hit`, I defined a threshold using our envelope (not the raw samples):
 
 ```python
 threshold = np.mean(envelope) * 1.2
