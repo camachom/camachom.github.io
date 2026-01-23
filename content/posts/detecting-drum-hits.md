@@ -24,8 +24,6 @@ For now, the script will analyze a file. The use case requires real-time analysi
 ### Analysis:
 5. classify_dynamics - classify each hit as either ghost, normal or accent 
 
----
-
 After some trial and error, the script works okay. Here are the samples I was testing with. They're not ideal but I needed something to make sure the basics work. Even without listening to the sample, the charts below aligns with the wave:
 
 https://freesound.org/people/George_Papargyris/sounds/837177/
