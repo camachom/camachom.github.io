@@ -51,7 +51,7 @@ Classified dynamics:
   2.464s: 0.4559 (ghost)
 ```
 
-First, let's define an `envelope`. Raw audio signals are jagged--falling and raising chaotically since they're recorded at specific intervals (like 44.1 kHz). The goal is to compressing subsets of samples into a single value to generate a smooth, estimated curve. Hits will be much easier to detect without so much noise (pun intended). Here is the general idea (although not an actual plot of an envelope): 
+First, let's define an `envelope`. Raw audio signals are jagged--falling and raising chaotically since they're recorded at specific intervals (like 44.1 kHz). The goal is to compress subsets of samples into a single value to generate a smooth, estimated curve. Hits will be much easier to detect without so much noise (pun intended). Here is the general idea (although not an actual plot of an envelope): 
 
 ![Wave plot showing raw audio signal](/files/wave.png)
 
