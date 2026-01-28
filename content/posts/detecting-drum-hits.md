@@ -109,3 +109,8 @@ It's a good start but far from being useful. I'm curious how AI will improve thi
 
 
 
+    
+## Update (Jan 2026)
+
+- This is an automated “Living Blog” test update.
+- Next step: replace this with real checks (broken links, stale claims, etc).
