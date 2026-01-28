@@ -109,3 +109,8 @@ It's a good start but far from being useful. I'm curious how AI will improve thi
 
 
 
+    
+## Update (Jan 2026)
+
+- the following links are broken:
+{"type" => "link_check", "urls" => ["https://github.com/camachom/drum-dynamics", "https://freesound.org/people/George_Papargyris/sounds/837177/", "https://freesound.org/people/Stereo%20Surgeon/sounds/266093/", "https://en.wikipedia.org/wiki/Root_mean_square"]}
