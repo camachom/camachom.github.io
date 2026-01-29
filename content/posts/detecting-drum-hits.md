@@ -109,4 +109,8 @@ It's a good start but far from being useful. I'm curious how AI will improve thi
 
 
 
-[broken link](https://en.wikipedia.org/wiki/asjdkfjsdafkjdsfk)
+[broken link](https://en.wikipedia.org/wiki/asjdkfjsdafkjdsfk)    
+## Update (Jan 2026)
+
+- the following links are broken:
+[{url: "https://en.wikipedia.org/wiki/Asjdkfjsdafkjdsfk", status: 404, ok: false}]
