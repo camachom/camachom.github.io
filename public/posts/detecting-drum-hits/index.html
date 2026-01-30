@@ -78,7 +78,6 @@ I normally practice with a metronome but you can get more sophisticated. There a
 <ol start="5">
 <li>classify_dynamics - classify each hit as either ghost, normal or accent</li>
 </ol>
-<hr>
 <p>After some trial and error, the script works okay. Here are the samples I was testing with. They&rsquo;re not ideal but I needed something to make sure the basics work. Even without listening to the sample, the charts below aligns with the wave:</p>
 <p><a href="https://freesound.org/people/George_Papargyris/sounds/837177/">https://freesound.org/people/George_Papargyris/sounds/837177/</a>
 <img src="/files/normal.png" alt="normal drum loop"></p>
@@ -97,7 +96,7 @@ I normally practice with a metronome but you can get more sophisticated. There a
 </span></span><span style="display:flex;"><span>  1.845s: 0.4840 <span style="color:#f92672">(</span>normal<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>  2.144s: 0.4746 <span style="color:#f92672">(</span>ghost<span style="color:#f92672">)</span>
 </span></span><span style="display:flex;"><span>  2.464s: 0.4559 <span style="color:#f92672">(</span>ghost<span style="color:#f92672">)</span>
-</span></span></code></pre></div><p>First, let&rsquo;s define an <code>envelope</code>. Raw audio signals are jagged&ndash;falling and raising chaotically since they&rsquo;re recorded at specific intervals (like 44.1 kHz). The goal is to compressing subsets of samples into a single value to generate a smooth, estimated curve. Hits will be much easier to detect without so much noise (pun intended). Here is the general idea (although not an actual plot of an envelope):</p>
+</span></span></code></pre></div><p>First, let&rsquo;s define an <code>envelope</code>. Raw audio signals are jagged&ndash;falling and raising chaotically since they&rsquo;re recorded at specific intervals (like 44.1 kHz). The goal is to compress subsets of samples into a single value to generate a smooth, estimated curve. Hits will be much easier to detect without so much noise (pun intended). Here is the general idea (although not an actual plot of an envelope):</p>
 <p><img src="/files/wave.png" alt="Wave plot showing raw audio signal"></p>
 <p>The rectangles are individual samples and the blue curve is what the envelope is trying to achieve. I computed the envelope using <a href="https://en.wikipedia.org/wiki/Root_mean_square">RMS windowing</a> as suggested by Claude:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(samples) <span style="color:#f92672">-</span> window_size, window_size):
