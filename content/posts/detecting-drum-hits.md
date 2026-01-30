@@ -90,23 +90,4 @@ def calculate_dynamic(amplitude: float, ghost_percentile: float, accent_percenti
 
 Those numbers are arbitrary and simply seemed to work well. 
 
-It's a good start but far from being useful. I'm curious how AI will improve this script. 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-[broken link](https://en.wikipedia.org/wiki/asjdkfjsdafkjdsfk)
+It's a good start but far from being useful. I'm curious how AI will improve this script.
