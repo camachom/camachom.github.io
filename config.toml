@@ -2,6 +2,10 @@
   [[module.imports]]
     path = 'github.com/camachom/hugo-theme-nostyleplease'
 
+[taxonomies]
+  tag = "tags"
+  series = "series"
+
 baseURL = "https://me.vs.computer"
 languageCode = "en-us"
 theme = "hugo-theme-nostyleplease"

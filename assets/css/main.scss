@@ -294,3 +294,18 @@ details[open] summary {
 .toc {
   padding: 1rem;
 }
+
+.series-nav {
+  margin: 1.5rem 0;
+  padding: 1rem;
+  border: thin solid currentColor;
+
+  p {
+    margin: 0 0 0.5rem 0;
+  }
+
+  ol {
+    margin: 0;
+    padding-left: 1.5rem;
+  }
+}

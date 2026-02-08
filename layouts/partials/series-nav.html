@@ -1,0 +1,22 @@
+{{ with .Params.series }}
+  {{ range . }}
+    {{ $series := . }}
+    {{ $seriesPages := where $.Site.RegularPages "Params.series" "intersect" (slice $series) }}
+    {{ if gt (len $seriesPages) 1 }}
+    <aside class="series-nav">
+      <p><strong>Series: {{ $series }}</strong></p>
+      <ol>
+        {{ range $seriesPages.ByDate }}
+        <li>
+          {{ if eq .Permalink $.Permalink }}
+            {{ .Title }} (current)
+          {{ else }}
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          {{ end }}
+        </li>
+        {{ end }}
+      </ol>
+    </aside>
+    {{ end }}
+  {{ end }}
+{{ end }}
