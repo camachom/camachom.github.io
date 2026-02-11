@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en"><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="en"><head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-   <meta name="description" content="I&rsquo;m going to reproduce the famous npm left-pad incident. I love it when bugs have (wikipedia)[https://en.wikipedia.org/wiki/Npm_left-pad_incident] pages. TLDR: a maintainer removed a library called left-pad from NPM breaking any project attempting to install it.
+   <meta name="description" content="I&rsquo;m going to reproduce the famous npm left-pad incident. I love it when bugs have wikipedia pages. TLDR: a maintainer removed a library called left-pad from NPM breaking any project attempting to install it.
 Why did this create chaos?
 Popular projects like React and Babel didn’t explicitly import left-pad but pulled it indirectly through their dependency trees. Here is a visual of my project&rsquo;s dependency tree:
 me@MacBookPro ~/R/l/app&gt; npm ls -a
 app@1.0.0 /Users/me/Repos/leftpad-repro/app
 └─┬ mid-lib@1.0.0
-  └── tiny-pad@1.0.
+  └── tiny-pad@1.0.0
 mid-lib is acting like React or Babel and tiny-pad is acting like left-pad. Instead of using npm as a registry, I created a directory called packages. For each package, I ran npm pack to create a tarball simulating a published package. All that mid-lib does is call tiny-pad:">  
 
   <title>
     
-      `npm left-pad` Incident
+      &#39;npm left-pad&#39; Incident
     
   </title>
 
@@ -23,7 +23,7 @@ mid-lib is acting like React or Babel and tiny-pad is acting like left-pad. Inst
   
   
   
-  <link rel="stylesheet" href="//localhost:1313/css/main.6b6ad22da25c9d6bd7fbe69da10779317be0e08272f1df8119c6d09e5d301439111c131e1faa6e9751f2c5dacdb60267d1079967df66ded0ec8c05d2b630711d.css" integrity="sha512-a2rSLaJcnWvX&#43;&#43;adoQd5MXvg4IJy8d&#43;BGcbQnl0wFDkRHBMeH6pul1HyxdrNtgJn0QeZZ99m3tDsjAXStjBxHQ==" />
+  <link rel="stylesheet" href="/css/main.83afdec0dcf76be26798d6ad9977c61088e490cfde1867d9ec1a708d9e37e3172cccbfc6d811bf6d590192f3871b95e75c777a76a7c46578390ad4b5cd303b70.css" integrity="sha512-g6/ewNz3a&#43;JnmNatmXfGEIjkkM/eGGfZ7BpwjZ434xcszL/G2BG/bVkBkvOHG5XnXHd6dqfEZXg5CtS1zTA7cA==" />
   
 </head>
 
@@ -61,7 +61,7 @@ mid-lib is acting like React or Babel and tiny-pad is acting like left-pad. Inst
                 </div>
 
 <article>
-    <h1>`npm left-pad` Incident</h1>
+    <h1>&#39;npm left-pad&#39; Incident</h1>
 
     
   
@@ -74,13 +74,13 @@ mid-lib is acting like React or Babel and tiny-pad is acting like left-pad. Inst
         
         <li>
           
-            <a href="//localhost:1313/posts/trailing-slash-url/">Trailing Slash in URLs?</a>
+            <a href="/posts/trailing-slash-url/">Trailing Slash in URLs?</a>
           
         </li>
         
         <li>
           
-            `npm left-pad` Incident (current)
+            &#39;npm left-pad&#39; Incident (current)
           
         </li>
         
@@ -93,13 +93,13 @@ mid-lib is acting like React or Babel and tiny-pad is acting like left-pad. Inst
 
     
 
-    <p>I&rsquo;m going to reproduce the famous <code>npm left-pad</code> incident. I love it when bugs have (wikipedia)[https://en.wikipedia.org/wiki/Npm_left-pad_incident] pages. TLDR: a maintainer removed a library called <code>left-pad</code> from NPM breaking any project attempting to install it.</p>
+    <p>I&rsquo;m going to reproduce the famous <code>npm left-pad</code> incident. I love it when bugs have <a href="https://en.wikipedia.org/wiki/Npm_left-pad_incident">wikipedia</a> pages. TLDR: a maintainer removed a library called <code>left-pad</code> from NPM breaking any project attempting to install it.</p>
 <p>Why did this create chaos?</p>
 <p>Popular projects like <code>React</code> and <code>Babel</code> didn’t explicitly import <code>left-pad</code> but pulled it indirectly through their dependency trees. Here is a visual of my project&rsquo;s dependency tree:</p>
 <pre tabindex="0"><code>me@MacBookPro ~/R/l/app&gt; npm ls -a
 app@1.0.0 /Users/me/Repos/leftpad-repro/app
 └─┬ mid-lib@1.0.0
-  └── tiny-pad@1.0.
+  └── tiny-pad@1.0.0
 </code></pre><p><code>mid-lib</code> is acting like <code>React</code> or <code>Babel</code> and <code>tiny-pad</code> is acting like <code>left-pad</code>. Instead of using <code>npm</code> as a registry, I created a directory called <code>packages</code>. For each package, I ran <code>npm pack</code> to create a tarball simulating a published package. All that <code>mid-lib</code> does is call <code>tiny-pad</code>:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// packages/mid-lib/index.js
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pad</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;tiny-pad&#34;</span>);
@@ -155,6 +155,7 @@ app@1.0.0 /Users/me/Repos/leftpad-repro/app
 </span></span><span style="display:flex;"><span>npm error enoent
 </span></span><span style="display:flex;"><span>npm error A complete log of this run can be found in: /Users/me/.npm/_logs/2026-02-08T22_54_18_238Z-debug-0.log
 </span></span></code></pre></div><p>This is exactly what happened with the <code>left-pad</code> incident. <code>mid-lib</code> hasn&rsquo;t changed but a fresh install will try to pull a non-existent <code>tiny-pad</code>.</p>
+<p>npm has made changes so that the rug can&rsquo;t be pulled, but it&rsquo;s still a great lesson. I learned a bunch reproducing this retro bug.</p>
 
 </article>
 

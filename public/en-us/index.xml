@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>En Us on </title>
-    <link>//localhost:1313/en-us/</link>
+    <link>/en-us/</link>
     <description>Recent content in En Us on </description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="//localhost:1313/en-us/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/en-us/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

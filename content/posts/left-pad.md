@@ -1,10 +1,10 @@
 ---
-title: "`npm left-pad` Incident"
+title: "'npm left-pad' Incident"
 date: 2026-02-06
 series: ["Retro Bugs"]
 ---
 
-I'm going to reproduce the famous `npm left-pad` incident. I love it when bugs have (wikipedia)[https://en.wikipedia.org/wiki/Npm_left-pad_incident] pages. TLDR: a maintainer removed a library called `left-pad` from NPM breaking any project attempting to install it.
+I'm going to reproduce the famous `npm left-pad` incident. I love it when bugs have [wikipedia](https://en.wikipedia.org/wiki/Npm_left-pad_incident) pages. TLDR: a maintainer removed a library called `left-pad` from NPM breaking any project attempting to install it.
 
 Why did this create chaos?
 
@@ -14,7 +14,7 @@ Popular projects like `React` and `Babel` didn’t explicitly import `left-pad` 
 me@MacBookPro ~/R/l/app> npm ls -a
 app@1.0.0 /Users/me/Repos/leftpad-repro/app
 └─┬ mid-lib@1.0.0
-  └── tiny-pad@1.0.
+  └── tiny-pad@1.0.0
 ```
 
 `mid-lib` is acting like `React` or `Babel` and `tiny-pad` is acting like `left-pad`. Instead of using `npm` as a registry, I created a directory called `packages`. For each package, I ran `npm pack` to create a tarball simulating a published package. All that `mid-lib` does is call `tiny-pad`:
@@ -72,7 +72,7 @@ me@MacBookPro ~/R/l/app (main)> node index.js
 00007
 ```
 
- Absolutely nothing! I admit: that was a trick question. `package.json` hasn't changed, so it aligns with `package-lock.json` and `/node_modules` so `npm` does nothing. To trigger the error, we need a fresh install:
+Absolutely nothing! I admit: that was a trick question. `package.json` hasn't changed, so it aligns with `package-lock.json` and `/node_modules` so `npm` does nothing. To trigger the error, we need a fresh install:
 
 ```bash
 me@MacBookPro ~/R/l/app (main)> rm -rf node_modules package-lock.json
@@ -91,14 +91,6 @@ npm error enoent
 npm error A complete log of this run can be found in: /Users/me/.npm/_logs/2026-02-08T22_54_18_238Z-debug-0.log
 ```
 
-This is exactly what happened with the `left-pad` incident. `mid-lib` hasn't changed but a fresh install will try to pull a non-existent `tiny-pad`. 
+This is exactly what happened with the `left-pad` incident. `mid-lib` hasn't changed but a fresh install will try to pull a non-existent `tiny-pad`.
 
-
-
-
-
-
-
-
-
-
+npm has made changes so that the rug can't be pulled, but it's still a great lesson. I learned a bunch reproducing this retro bug.

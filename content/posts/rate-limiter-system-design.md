@@ -3,7 +3,7 @@ title: "System design: rate limiter"
 date: 2026-01-12
 ---
 
-Like a lot of system design exercises, most engineers don’t actually build rate limiters at work. Most companies rely on off-the-shelf solutions they’re already using—Cloudflare, NGINX, etc. Still, rate limiting is a foundational concept for web developers and a classic system design problem.
+Like a lot of system design exercises, most engineers don’t actually build rate limiters at work. Most companies rely on off-the-shelf solutions from products they’re already using—Cloudflare, NGINX, etc. Still, rate limiting is a foundational concept for web developers and a classic system design problem.
 
 The [ByteByteGo write-up](https://bytebytego.com/courses/system-design-interview/design-a-rate-limiter) is helpful, but I don't retain much by just reading. Instead, after getting comfortable with the high-level ideas, I used Claude to build a toy rate limiter.
 
