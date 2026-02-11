@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Retro Bugs on </title>
+    <link>//localhost:1313/series/retro-bugs/</link>
+    <description>Recent content in Retro Bugs on </description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 06 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/series/retro-bugs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>`npm left-pad` Incident</title>
+      <link>//localhost:1313/posts/left-pad/</link>
+      <pubDate>Fri, 06 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/left-pad/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m going to reproduce the famous &lt;code&gt;npm left-pad&lt;/code&gt; incident. I love it when bugs have (wikipedia)[https://en.wikipedia.org/wiki/Npm_left-pad_incident] pages. TLDR: a maintainer removed a library called &lt;code&gt;left-pad&lt;/code&gt; from NPM breaking any project attempting to install it.&lt;/p&gt;&#xA;&lt;p&gt;Why did this create chaos?&lt;/p&gt;&#xA;&lt;p&gt;Popular projects like &lt;code&gt;React&lt;/code&gt; and &lt;code&gt;Babel&lt;/code&gt; didn’t explicitly import &lt;code&gt;left-pad&lt;/code&gt; but pulled it indirectly through their dependency trees. Here is a visual of my project&amp;rsquo;s dependency tree:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;me@MacBookPro ~/R/l/app&amp;gt; npm ls -a&#xA;app@1.0.0 /Users/me/Repos/leftpad-repro/app&#xA;└─┬ mid-lib@1.0.0&#xA;  └── tiny-pad@1.0.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;mid-lib&lt;/code&gt; is acting like &lt;code&gt;React&lt;/code&gt; or &lt;code&gt;Babel&lt;/code&gt; and &lt;code&gt;tiny-pad&lt;/code&gt; is acting like &lt;code&gt;left-pad&lt;/code&gt;. Instead of using &lt;code&gt;npm&lt;/code&gt; as a registry, I created a directory called &lt;code&gt;packages&lt;/code&gt;. For each package, I ran &lt;code&gt;npm pack&lt;/code&gt; to create a tarball simulating a published package. All that &lt;code&gt;mid-lib&lt;/code&gt; does is call &lt;code&gt;tiny-pad&lt;/code&gt;:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Trailing Slash in URLs?</title>
+      <link>//localhost:1313/posts/trailing-slash-url/</link>
+      <pubDate>Fri, 30 Jan 2026 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/trailing-slash-url/</guid>
+      <description>&lt;p&gt;While working on a toy web crawler, I ran into an issue that circulated the web in the early 2010s: should URLs end with a trailing &lt;code&gt;/&lt;/code&gt;?&lt;/p&gt;&#xA;&lt;p&gt;There&amp;rsquo;s a vintage (15 year old) &lt;a href=&#34;https://stackoverflow.com/questions/5948659/when-should-i-use-a-trailing-slash-in-my-url&#34;&gt;StackOverflow&lt;/a&gt; thread that discusses the topic. Mainly that depending on the choice, relative paths point to different places:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;child relative to /base/ is /base/child.&#xA;child relative to /base is (perhaps surprisingly) /child.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Most web servers (Apache, Nginx) follow the convention that a trailing &lt;code&gt;/&lt;/code&gt; means &amp;ldquo;look for index.html in this directory&amp;rdquo;. If the path is a directory and there&amp;rsquo;s no trailing slash, you normally get a 301 redirect:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

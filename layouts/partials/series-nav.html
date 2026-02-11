@@ -2,9 +2,9 @@
   {{ range . }}
     {{ $series := . }}
     {{ $seriesPages := where $.Site.RegularPages "Params.series" "intersect" (slice $series) }}
-    {{ if gt (len $seriesPages) 1 }}
     <aside class="series-nav">
-      <p><strong>Series: {{ $series }}</strong></p>
+      <p><strong>Part of series: <a href="{{ "/series/" | relLangURL }}{{ $series | urlize }}/">{{ $series }}</a></strong></p>
+      {{ if gt (len $seriesPages) 1 }}
       <ol>
         {{ range $seriesPages.ByDate }}
         <li>
@@ -16,7 +16,7 @@
         </li>
         {{ end }}
       </ol>
+      {{ end }}
     </aside>
-    {{ end }}
   {{ end }}
 {{ end }}

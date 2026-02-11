@@ -14,6 +14,10 @@ theme = "hugo-theme-nostyleplease"
   customCSS = ["css/main.scss"]
   favicon = "favicon.ico"
 
+  [params.chatbot]
+    enabled = true
+    apiUrl = "https://guardrail.5d2z4xvxvd.workers.dev/chat"
+
   [params.theme_config]
     back_home_text    = ".."
     date_format       = "2006-01-02"

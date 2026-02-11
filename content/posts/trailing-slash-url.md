@@ -1,11 +1,12 @@
 ---
-title: "Retro Bug"
+title: "Trailing Slash in URLs?"
 date: 2026-01-30
+series: ["Retro Bugs"]
 ---
 
 While working on a toy web crawler, I ran into an issue that circulated the web in the early 2010s: should URLs end with a trailing `/`?
 
-There's a vintage (15 year old) [StackOverflow](https://stackoverflow.com/questions/5948659/when-should-i-use-a-trailing-slash-in-my-url?utm_source=chatgpt.com) thread that discusses the topic. Mainly that depending on the choice, relative paths point to different places:
+There's a vintage (15 year old) [StackOverflow](https://stackoverflow.com/questions/5948659/when-should-i-use-a-trailing-slash-in-my-url) thread that discusses the topic. Mainly that depending on the choice, relative paths point to different places:
 
 ```
 child relative to /base/ is /base/child.

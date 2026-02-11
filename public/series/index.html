@@ -16,7 +16,7 @@
   
   
   
-  <link rel="stylesheet" href="//localhost:1313/css/main.56ee6a3d61c97ff4b5a6529d4903f39644e65d9c9e6d51d6f39b66966c0c81a07dcc63c7ba42eab8864c74640b971a24645f2d93243eaaacfdc5a8b496c976f7.css" integrity="sha512-Vu5qPWHJf/S1plKdSQPzlkTmXZyebVHW85tmlmwMgaB9zGPHukLquIZMdGQLlxokZF8tkyQ&#43;qqz9xai0lsl29w==" />
+  <link rel="stylesheet" href="//localhost:1313/css/main.6b6ad22da25c9d6bd7fbe69da10779317be0e08272f1df8119c6d09e5d301439111c131e1faa6e9751f2c5dacdb60267d1079967df66ded0ec8c05d2b630711d.css" integrity="sha512-a2rSLaJcnWvX&#43;&#43;adoQd5MXvg4IJy8d&#43;BGcbQnl0wFDkRHBMeH6pul1HyxdrNtgJn0QeZZ99m3tDsjAXStjBxHQ==" />
   
 </head>
 
@@ -50,6 +50,13 @@
 
 
 
+    <ul><li>
+            <span>2026-02-06</span>
+            <a href="//localhost:1313/series/retro-bugs/">Retro Bugs</a>
+        </li>
+        
+    </ul>
+
 
 
                 
@@ -64,5 +71,45 @@
 
             </div>
         </main>
+        
+          <div id="chatbot-widget" class="chatbot-widget">
+  <button id="chatbot-toggle" class="chatbot-toggle" aria-label="Open chat">
+    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+    </svg>
+  </button>
+
+  <div id="chatbot-container" class="chatbot-container chatbot-hidden">
+    <div class="chatbot-header">
+      <span>Ask about Martin</span>
+      <button id="chatbot-close" class="chatbot-close" aria-label="Close chat">&times;</button>
+    </div>
+    <div id="chatbot-messages" class="chatbot-messages">
+      <div class="chatbot-message chatbot-bot">
+        Hey! Ask me anything about Martin's background, skills, or experience.
+      </div>
+    </div>
+    <form id="chatbot-form" class="chatbot-form">
+      <input
+        type="text"
+        id="chatbot-input"
+        class="chatbot-input"
+        placeholder="Ask a question..."
+        maxlength="500"
+        autocomplete="off"
+        required
+      >
+      <button type="submit" class="chatbot-submit">Send</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  window.CHATBOT_API_URL = "https:\/\/guardrail.5d2z4xvxvd.workers.dev\/chat";
+</script>
+
+<script defer src="/js/chatbot.min.js"></script>
+
+        
     </body>
 </html>
