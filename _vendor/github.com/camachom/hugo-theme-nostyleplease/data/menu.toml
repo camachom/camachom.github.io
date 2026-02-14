@@ -2,7 +2,7 @@
 title = "info"
 
   [[entries.entries]]
-  title = """<div>My name is Martin, and I'm a software engineer. Here's my <a href='/files/martin-camacho-resume.pdf'>resume</a>. Feel free to <a href='mailto:camachom@fastmail.com'>contact me</a>.</div>"""
+  title = """<div>My name is Martin, and I'm a software engineer. Here's my <a href='/files/martin-camacho-resume.pdf'>resume</a>. Feel free to <a href='mailto:camachom@fastmail.com'>contact me</a>, or use the chat icon in the bottom right to ask me anything.</div>"""
 
 
 [[entries]]
