@@ -1,0 +1,25 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BlogSummaryCard from './BlogSummaryCard.astro';
+
+interface Props {
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { posts } = Astro.props;
+
+const colors = ['#fca5a5', '#a7f3d0', '#fef08a', '#79a8ff', '#5eead4', '#c4b5fd'];
+const randomColor = colors[Math.floor(Math.random() * colors.length)];
+---
+
+<ul class='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
+  {
+    posts.map((post) => {
+      return (
+        <li>
+          <BlogSummaryCard post={post} color={randomColor} />
+        </li>
+      );
+    })
+  }
+</ul>

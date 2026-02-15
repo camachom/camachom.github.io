@@ -1,0 +1,76 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card } from '@eliancodes/brutal-ui';
+import { Pill } from '@eliancodes/brutal-ui';
+import { Button } from '@eliancodes/brutal-ui';
+
+const projects = [
+  {
+    title: 'Drum Dynamics Analyzer',
+    description: 'A Python tool that analyzes drum recordings to detect hits and classify dynamics (ghost notes, accents, normal hits). Uses RMS windowing for envelope detection and amplitude-based classification.',
+    tech: ['Python', 'NumPy', 'Audio Processing'],
+    github: 'https://github.com/camachom/drum-dynamics',
+    color: '#79a8ff',
+  },
+  {
+    title: 'AI Chatbot Widget',
+    description: 'A conversational AI widget powered by Claude that answers questions about my background and experience. Deployed as a Cloudflare Worker with conversation history support.',
+    tech: ['TypeScript', 'Cloudflare Workers', 'Claude API'],
+    github: 'https://github.com/camachom',
+    color: '#fef08a',
+  },
+  {
+    title: 'Rate Limiter Implementation',
+    description: 'A Ruby on Rails middleware implementing token bucket rate limiting. Built to understand system design concepts hands-on with proper thread safety using Mutex.',
+    tech: ['Ruby', 'Rails', 'System Design'],
+    github: 'https://github.com/camachom',
+    color: '#a7f3d0',
+  },
+  {
+    title: 'Retro Bug Reproductions',
+    description: 'A series of projects reproducing famous bugs from computing history, including the npm left-pad incident and Apache trailing slash vulnerability.',
+    tech: ['Node.js', 'Apache', 'Security'],
+    github: 'https://github.com/camachom/infra',
+    color: '#fca5a5',
+  },
+];
+---
+
+<Layout
+  title='Projects'
+  pageTitle='Projects | Martin Camacho'
+  description='A collection of side projects and experiments by Martin Camacho.'
+>
+  <main class='bg-white p-6'>
+    <section class='grid md:grid-cols-2 gap-8'>
+      <div class='md:col-span-2'>
+        <Card>
+          <h1 class='text-4xl md:text-6xl lg:text-8xl dm-serif'>Projects</h1>
+          <p class='mt-4 poppins text-lg'>
+            A collection of side projects, experiments, and learning exercises.
+            I believe in building to learn—these projects help concepts stick.
+          </p>
+        </Card>
+      </div>
+
+      {projects.map((project) => (
+        <Card color={project.color}>
+          <h2 class='text-2xl md:text-4xl dm-serif mb-4'>{project.title}</h2>
+          <p class='poppins mb-4'>{project.description}</p>
+          <ul class='flex gap-2 flex-wrap mb-4'>
+            {project.tech.map((t) => (
+              <li>
+                <Pill>
+                  <span class='sanchez text-sm'>{t}</span>
+                </Pill>
+              </li>
+            ))}
+          </ul>
+          <Button href={project.github} target='_blank'>
+            View on GitHub &rarr;
+          </Button>
+        </Card>
+      ))}
+    </section>
+  </main>
+</Layout>

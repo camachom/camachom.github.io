@@ -1,0 +1,134 @@
+---
+import Layout from '@layouts/Default.astro';
+import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
+import MobileSocials from '@components/home/MobileSocials.astro';
+import { Pill } from '@eliancodes/brutal-ui';
+import { Button } from '@eliancodes/brutal-ui';
+import { Card } from '@eliancodes/brutal-ui';
+
+const techStack = [
+  { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
+  { name: 'Ruby on Rails', url: 'https://rubyonrails.org/' },
+  { name: 'React', url: 'https://react.dev/' },
+  { name: 'Node.js', url: 'https://nodejs.org/' },
+  { name: 'PostgreSQL', url: 'https://www.postgresql.org/' },
+  { name: 'AWS', url: 'https://aws.amazon.com/' },
+];
+---
+
+<Layout
+  title='Home'
+  pageTitle='Martin Camacho | Software Engineer'
+  description='Software engineer with 7+ years of experience building web applications. Currently exploring ML and AI.'
+>
+  <main class='bg-white p-6'>
+    <MobileSocials />
+
+    <!-- Hero Section -->
+    <section id='hero' class='grid md:grid-cols-8 gap-8 mt-4'>
+      <h2 class='hidden'>About Martin</h2>
+
+      <!-- Left Card - Role/Title -->
+      <div class='col-span-full md:col-span-5'>
+        <Card color='#5eead4'>
+          <div class='flex flex-col justify-between items-start gap-4 min-h-[280px] md:min-h-[320px]'>
+            <div>
+              <p class='outfit text-4xl md:text-6xl lg:text-7xl font-bold'>
+                Software Engineer
+              </p>
+              <p class='mt-4 poppins text-lg md:text-xl text-gray-700'>
+                Previously @ BuildZoom
+              </p>
+              <p class='mt-2 poppins text-lg md:text-xl flex items-center gap-2'>
+                <span class='i-uil-map-marker'></span>
+                Based in New York
+              </p>
+              <a href='mailto:camachom@fastmail.com' class='mt-2 poppins text-lg md:text-xl flex items-center gap-2 hover:underline'>
+                <span class='i-uil-envelope'></span>
+                camachom@fastmail.com
+              </a>
+              <p class='mt-2 poppins text-lg md:text-xl flex items-center gap-2'>
+                <span class='i-uil-comment-dots'></span>
+                Or ask my chatbot (bottom right)
+              </p>
+            </div>
+            <div class='flex gap-4 flex-wrap mt-4'>
+              <Button target={'_self'} href='/blog/'>
+                Read my blog &rarr;
+              </Button>
+              <Button target={'_blank'} href='/martin-camacho-resume.pdf' color='#fef08a'>
+                Resume (PDF)
+              </Button>
+            </div>
+          </div>
+        </Card>
+      </div>
+
+      <!-- Right Side - Photo -->
+      <div class='col-span-full md:col-span-3'>
+        <div class='h-[280px] md:h-[320px] border-3 border-black card-shadow bg-white overflow-hidden'>
+          <img
+            src='/martin.jpg'
+            alt='Martin Camacho'
+            class='w-full h-full object-cover object-[center_35%]'
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Second Row - Tech Stack & Bio -->
+    <section id='about' class='grid md:grid-cols-8 gap-8 mt-8'>
+      <h2 class='hidden'>More about Martin</h2>
+
+      <!-- Left Card - Tech Stack -->
+      <div class='col-span-full md:col-span-3'>
+        <Card>
+          <h2 class='text-2xl md:text-4xl mb-6 dm-serif'>
+            What I work with
+          </h2>
+          <ul class='flex gap-3 flex-wrap'>
+            {
+              techStack.map((item) => (
+                <li>
+                  <Pill>
+                    <a
+                      class='sanchez'
+                      href={item.url}
+                      target='_blank'
+                      title={`Learn about ${item.name}`}
+                    >
+                      {item.name}
+                    </a>
+                  </Pill>
+                </li>
+              ))
+            }
+          </ul>
+        </Card>
+      </div>
+
+      <!-- Right Card - Currently -->
+      <div class='col-span-full md:col-span-5'>
+        <Card color='#fca5a5'>
+          <h2 class='text-2xl md:text-4xl mb-4 dm-serif'>
+            Currently
+          </h2>
+          <p class='poppins text-base md:text-lg'>
+            After 5 years at BuildZoom, I'm exploring new opportunities.
+            I'm diving into ML fundamentals, building side projects, and
+            writing about what I learn along the way.
+          </p>
+        </Card>
+      </div>
+    </section>
+
+    <!-- Recent Posts -->
+    <RecentBlogPosts />
+  </main>
+</Layout>
+
+<style>
+  .border-3 {
+    border-width: 3px;
+  }
+</style>

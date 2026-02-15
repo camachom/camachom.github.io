@@ -1,0 +1,101 @@
+---
+import Layout from '@layouts/Default.astro';
+import { Card } from '@eliancodes/brutal-ui';
+import { Button } from '@eliancodes/brutal-ui';
+import { Pill } from '@eliancodes/brutal-ui';
+
+const skills = [
+  'TypeScript', 'JavaScript', 'Ruby', 'Python', 'SQL',
+  'React', 'Node.js', 'Rails', 'PostgreSQL', 'Redis',
+  'AWS', 'Docker', 'Git', 'REST APIs', 'System Design',
+];
+
+const interests = [
+  'Machine Learning', 'Neural Networks', 'Drumming', 'Chess', 'Math',
+];
+---
+
+<Layout
+  title='About'
+  pageTitle='About | Martin Camacho'
+  description='Learn more about Martin Camacho - software engineer, lifelong learner, and builder.'
+>
+  <main class='bg-white p-6'>
+    <section class='grid md:grid-cols-8 gap-8'>
+      <div class='md:col-span-5'>
+        <Card>
+          <h1 class='text-4xl md:text-6xl lg:text-8xl dm-serif mb-6'>About Me</h1>
+
+          <div class='poppins space-y-4 text-lg'>
+            <p>
+              I'm a software engineer with 7+ years of experience building web applications.
+              Most recently, I spent 5 years at BuildZoom working on full-stack features
+              across the platform.
+            </p>
+
+            <p>
+              I went the non-traditional route into tech—attending a coding bootcamp and
+              then going back to community college in my late 20s to study math. I've
+              completed Calculus I-III, Discrete Math, Linear Algebra, and Differential
+              Equations while working full-time.
+            </p>
+
+            <p>
+              Right now, I'm exploring machine learning fundamentals and building side
+              projects to understand how things work under the hood. I believe in learning
+              by building—even if it means recreating things that already exist.
+            </p>
+
+            <p>
+              Outside of coding, I play drums, enjoy chess (made $16.67 in a tournament!),
+              and occasionally write about what I'm learning.
+            </p>
+          </div>
+        </Card>
+      </div>
+
+      <div class='md:col-span-3 space-y-8'>
+        <Card color='#a7f3d0'>
+          <h2 class='text-2xl md:text-4xl dm-serif mb-4'>Skills</h2>
+          <ul class='flex gap-2 flex-wrap'>
+            {skills.map((skill) => (
+              <li>
+                <Pill>
+                  <span class='sanchez'>{skill}</span>
+                </Pill>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        <Card color='#fca5a5'>
+          <h2 class='text-2xl md:text-4xl dm-serif mb-4'>Interests</h2>
+          <ul class='flex gap-2 flex-wrap'>
+            {interests.map((interest) => (
+              <li>
+                <Pill>
+                  <span class='sanchez'>{interest}</span>
+                </Pill>
+              </li>
+            ))}
+          </ul>
+        </Card>
+
+        <Card color='#79a8ff'>
+          <h2 class='text-2xl md:text-4xl dm-serif mb-4'>Get in Touch</h2>
+          <div class='flex flex-col gap-4'>
+            <Button href='https://www.linkedin.com/in/camachomartin/' target='_blank'>
+              LinkedIn &rarr;
+            </Button>
+            <Button href='https://github.com/camachom' target='_blank' color='#fef08a'>
+              GitHub &rarr;
+            </Button>
+            <Button href='/martin-camacho-resume.pdf' target='_blank' color='#a7f3d0'>
+              Resume (PDF) &rarr;
+            </Button>
+          </div>
+        </Card>
+      </div>
+    </section>
+  </main>
+</Layout>

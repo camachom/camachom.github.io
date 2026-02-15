@@ -1,0 +1,27 @@
+---
+interface Props {
+  pubDate: Date;
+  author: string;
+  title: string;
+}
+
+const { pubDate, author, title } = Astro.props;
+
+const formattedDate = pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<article class='prose-slate w-sm md:w-prose md:prose poppins'>
+  <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
+  <h1 class='text-3xl md:text-5xl font-bold mt-6 mb-4 dm-serif'>{title}</h1>
+  <p class='text-slate text-sm md:text-base mb-8'>
+    {formattedDate}
+  </p>
+  <slot />
+  <hr class='my-8 border-t-2 border-black' />
+  <p class='text-slate'>Written by {author}</p>
+  <a href='/blog/' title='Back to blog'>&larr; Back to blog</a>
+</article>

@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '@layouts/Default.astro';
+import BlogList from '@components/blog/BlogList.astro';
+
+const posts = await getCollection('blog').then((collection) =>
+  collection
+    .filter((post) => !post.data.draft)
+    .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
+);
+---
+
+<Layout
+  title='Blog'
+  description='Technical blog posts about software engineering, system design, and learning in public.'
+  pageTitle='Blog | me.vs.computer'
+>
+  <main class='bg-white p-6'>
+    <BlogList posts={posts} />
+  </main>
+</Layout>
