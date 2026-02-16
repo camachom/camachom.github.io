@@ -1,10 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import Layout from '@layouts/Default.astro';
 import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
 import MobileSocials from '@components/home/MobileSocials.astro';
 import { Pill } from '@eliancodes/brutal-ui';
 import { Button } from '@eliancodes/brutal-ui';
 import { Card } from '@eliancodes/brutal-ui';
+import martinImage from '../assets/martin.jpg';
 
 const techStack = [
   { name: 'TypeScript', url: 'https://www.typescriptlang.org/' },
@@ -34,10 +36,10 @@ const techStack = [
           <div class='flex flex-col justify-between items-start gap-4 min-h-[280px] md:min-h-[320px]'>
             <div>
               <p class='outfit text-4xl md:text-6xl lg:text-7xl font-bold'>
-                Software Engineer
+                Product Engineer
               </p>
-              <p class='mt-4 poppins text-lg md:text-xl text-gray-700'>
-                Previously @ BuildZoom
+              <p class='mt-2 poppins text-lg md:text-xl'>
+                Full-stack product engineer shipping production features and experimenting with LLM-powered workflows.
               </p>
               <p class='mt-2 poppins text-lg md:text-xl flex items-center gap-2'>
                 <span class='i-uil-map-marker'></span>
@@ -67,9 +69,11 @@ const techStack = [
       <!-- Right Side - Photo -->
       <div class='col-span-full md:col-span-3'>
         <div class='h-[280px] md:h-[320px] border-3 border-black card-shadow bg-white overflow-hidden'>
-          <img
-            src='/martin.jpg'
+          <Image
+            src={martinImage}
             alt='Martin Camacho'
+            width={800}
+            densities={[1, 2]}
             class='w-full h-full object-cover object-[center_35%]'
           />
         </div>
@@ -114,9 +118,7 @@ const techStack = [
             Currently
           </h2>
           <p class='poppins text-base md:text-lg'>
-            After 5 years at BuildZoom, I'm exploring new opportunities.
-            I'm diving into ML fundamentals, building side projects, and
-            writing about what I learn along the way.
+            After five years at BuildZoom, I’m exploring new opportunities. I’m building side projects with LLMs and agent-style workflows, and writing about what I learn along the way.
           </p>
         </Card>
       </div>
