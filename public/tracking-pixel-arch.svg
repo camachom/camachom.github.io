@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 720" font-family="'JetBrains Mono', 'Fira Code', 'SF Mono', monospace">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;display=swap');
+    </style>
+
+    <!-- subtle shadow for boxes -->
+    <filter id="shadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- arrow marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9" fill="none" stroke="#D35400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+
+    <!-- dashed arrow for fan-out -->
+    <marker id="arrow-dim" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9" fill="none" stroke="#D35400" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.7"/>
+    </marker>
+  </defs>
+
+  <!-- background -->
+  <rect width="880" height="720" fill="#FAFBFC" rx="8"/>
+
+  <!-- subtle grid lines -->
+  <g stroke="#E1E4E8" stroke-width="0.5" opacity="0.6">
+    <line x1="0" y1="120" x2="880" y2="120"/>
+    <line x1="0" y1="240" x2="880" y2="240"/>
+    <line x1="0" y1="360" x2="880" y2="360"/>
+    <line x1="0" y1="480" x2="880" y2="480"/>
+    <line x1="0" y1="600" x2="880" y2="600"/>
+  </g>
+
+  <!-- title -->
+  <text x="440" y="42" text-anchor="middle" fill="#24292E" font-size="15" font-weight="700" letter-spacing="3">TRACKING PIXEL — EVENT PIPELINE</text>
+  <line x1="140" y1="56" x2="740" y2="56" stroke="#D35400" stroke-width="1" opacity="0.35"/>
+
+  <!-- ═══════════════════ BROWSER ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="340" y="80" width="200" height="52" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+  </g>
+  <text x="440" y="102" text-anchor="middle" fill="#D35400" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">CLIENT</text>
+  <text x="440" y="120" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Browser</text>
+
+  <!-- Arrows: Browser → API Gateway (two endpoints) -->
+  <line x1="400" y1="132" x2="400" y2="175" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.85"/>
+  <text x="350" y="160" fill="#57606A" font-size="9" letter-spacing="0.5" text-anchor="end">GET /p.gif</text>
+  <line x1="480" y1="132" x2="480" y2="175" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.85"/>
+  <text x="530" y="160" fill="#57606A" font-size="9" letter-spacing="0.5">POST /e</text>
+
+  <!-- ═══════════════════ API GATEWAY ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="305" y="180" width="270" height="52" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <!-- orange left accent bar -->
+    <rect x="305" y="180" width="3" height="52" rx="1" fill="#D35400"/>
+  </g>
+  <text x="325" y="203" fill="#D35400" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">AWS</text>
+  <text x="440" y="215" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">API Gateway</text>
+  <text x="555" y="203" fill="#8B949E" font-size="9" text-anchor="end">HTTP API</text>
+
+  <!-- Arrow: API GW → Ingest Lambda -->
+  <line x1="440" y1="232" x2="440" y2="275" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.85"/>
+
+  <!-- ═══════════════════ LAMBDA INGEST ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="305" y="280" width="270" height="68" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <rect x="305" y="280" width="3" height="68" rx="1" fill="#E8740C"/>
+  </g>
+  <text x="325" y="303" fill="#E8740C" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">LAMBDA</text>
+  <text x="440" y="318" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Ingest</text>
+  <text x="440" y="336" text-anchor="middle" fill="#57606A" font-size="10">parse UA · enrich · 1×1 GIF or 202</text>
+
+  <!-- Arrow: Ingest → Kinesis -->
+  <line x1="440" y1="348" x2="440" y2="391" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.85"/>
+  <text x="454" y="376" fill="#57606A" font-size="9" letter-spacing="0.5">PutRecord</text>
+
+  <!-- ═══════════════════ KINESIS ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="265" y="396" width="350" height="68" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <rect x="265" y="396" width="3" height="68" rx="1" fill="#CF222E"/>
+  </g>
+  <text x="285" y="419" fill="#CF222E" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">KINESIS</text>
+  <text x="440" y="434" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Data Streams</text>
+  <text x="440" y="452" text-anchor="middle" fill="#57606A" font-size="10">durable log · 24h retention</text>
+
+  <!-- Arrow: Kinesis → Consumer Lambda -->
+  <line x1="440" y1="464" x2="440" y2="507" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow)" opacity="0.85"/>
+  <text x="454" y="492" fill="#57606A" font-size="9" letter-spacing="0.5">event source mapping · batch=100 · 5s window</text>
+
+  <!-- ═══════════════════ LAMBDA CONSUMER ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="305" y="512" width="270" height="68" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <rect x="305" y="512" width="3" height="68" rx="1" fill="#E8740C"/>
+  </g>
+  <text x="325" y="535" fill="#E8740C" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">LAMBDA</text>
+  <text x="440" y="550" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Consumer</text>
+  <text x="440" y="568" text-anchor="middle" fill="#57606A" font-size="10">aggregate · compress · store</text>
+
+  <!-- Fan-out arrows -->
+  <!-- Arrow: Consumer → S3 -->
+  <path d="M 380 580 Q 380 610 270 630" fill="none" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow-dim)" opacity="0.7"/>
+
+  <!-- Arrow: Consumer → DynamoDB -->
+  <path d="M 500 580 Q 500 610 610 630" fill="none" stroke="#D35400" stroke-width="1.5" marker-end="url(#arrow-dim)" opacity="0.7"/>
+
+  <!-- ═══════════════════ S3 ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="100" y="635" width="220" height="68" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <rect x="100" y="635" width="3" height="68" rx="1" fill="#1A7F37"/>
+  </g>
+  <text x="120" y="658" fill="#1A7F37" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">S3</text>
+  <text x="210" y="673" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Event Archive</text>
+  <text x="210" y="691" text-anchor="middle" fill="#57606A" font-size="10">year=/month=/day=/hour=/ · gzip</text>
+
+  <!-- ═══════════════════ DYNAMODB ═══════════════════ -->
+  <g filter="url(#shadow)">
+    <rect x="560" y="635" width="220" height="68" rx="4" fill="#FFFFFF" stroke="#D0D7DE" stroke-width="1.5"/>
+    <rect x="560" y="635" width="3" height="68" rx="1" fill="#0969DA"/>
+  </g>
+  <text x="580" y="658" fill="#0969DA" font-size="10" font-weight="600" letter-spacing="2" opacity="0.8">DYNAMODB</text>
+  <text x="670" y="673" text-anchor="middle" fill="#24292E" font-size="13" font-weight="600">Stats</text>
+  <text x="670" y="691" text-anchor="middle" fill="#57606A" font-size="10">counters · recent events · 7d TTL</text>
+
+  <!-- ═══════════════════ SIDE LABELS ═══════════════════ -->
+  <!-- left column: phase labels -->
+  <g opacity="0.3">
+    <text x="28" y="108" fill="#24292E" font-size="9" font-weight="600" letter-spacing="1.5" transform="rotate(-90 28 108)">REQUEST</text>
+    <text x="28" y="330" fill="#24292E" font-size="9" font-weight="600" letter-spacing="1.5" transform="rotate(-90 28 330)">INGEST</text>
+    <text x="28" y="530" fill="#24292E" font-size="9" font-weight="600" letter-spacing="1.5" transform="rotate(-90 28 530)">PROCESS</text>
+    <text x="28" y="680" fill="#24292E" font-size="9" font-weight="600" letter-spacing="1.5" transform="rotate(-90 28 680)">STORE</text>
+  </g>
+
+  <!-- left vertical accent line -->
+  <line x1="50" y1="80" x2="50" y2="703" stroke="#D35400" stroke-width="0.5" opacity="0.2"/>
+</svg>

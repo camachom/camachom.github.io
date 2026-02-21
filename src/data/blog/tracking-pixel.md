@@ -1,41 +1,62 @@
 ---
 title: "Building a Tracking Pixel"
-pubDate: "2026-02-06"
-description: "Implementing a tracking pixel from scratch using AWS API Gateway, Lambda, Firehose, and S3."
-draft: true
+pubDate: "2026-02-21"
+description: "Implementing a tracking pixel from scratch using AWS API Gateway, Lambda, Kinesis, and S3."
+draft: false
 tags:
   - AWS
   - Software Engineering
 ---
 
-Ar my previous job, we would rank users every year and send them a badge they could show off on their website. Similar to how restaurants falunt Yelp stickets. Teh badge included a tracking pixel.
+Tracking pixels have a simple job: return a 1x1 transparent gif. But they have to support a large load and any mistake can affect thousands if not millions of rows.
 
-Tracking pixels have a simple job: make a request unload and return a one by one transparent gift. They're interesting because they have to support a large load and Any mistake can affect Thousands of not millions of rows.
+At my previous job, we would rank users every year and send them a badge they could show off on their website — similar to how restaurants flaunt Yelp stickers. The badge included a tracking pixel.
 
-I decided to implement a basic tracking pixel because I had experience adding features to the system, but I had never set it up from scratch. I took a simplified approach because It's meant to be educational and not production ready but it's based on the architecture We used a BuildZoom:
+I built a serverless implementation inspired by that system deployed on AWS via Terraform to us-west-1 (I know, I know, but I used to live in California). Here's the [demo](https://64caxv0uii.execute-api.us-west-1.amazonaws.com) and the [github repo](https://github.com/camachom/infra/tree/main/projects/tracking-pixel).
 
-Production Architecture:
-API Gateway → Kinesis Data Streams → Lambda -> Snowflake
+![Tracking pixel architecture diagram](/tracking-pixel-arch.svg)
 
-Reproduction architecture
-API Gateway → Lambda → Firehose -> S3
+## API Gateway
+You don't want to overwhelm your app server with analytics calls. At the end of the day, analytics are secondary to user interactions. All requests go to an API Gateway, integrated with an AWS Lambda. This is an easy task if you're already using AWS. You should add throttling (API Gateway supports rate and burst limits out of the box) to make sure it's not abused.
 
-## ingest
-You don't want to overwhelm your app server with analytics calls. At the end of the day, analytics our secondary to use our interactions. Instead of using rails, all request would go into an API gateway, integrated with an AWS Lander. This is an easy task if you're already using AWS.
+## Ingest
+Why have a lambda here in the first place and not integrate the API Gateway with Kinesis directly? It's a place to format the data and enrich the event before it hits the stream. All mine does is parse the User-Agent, write the record to Kinesis and return the pixel. Keep this lambda lightweight since it's not benefiting from Kinesis.
 
-The first deviation in architecture happens at the lamb level. My project is not expecting a lot of traffic. At most there will be deployed in this blog or get simulated data for test testing. Add in kinesis felt like over engineering. 
+## Data Stream
+This is the critical piece of infra that's enabling a high throughput suitable for analytics calls. Kinesis logs all the events from ingest and retains them for 24h (configurable). The idea is that ingest and consuming are now decoupled. It also allows retries if the consumer lambda fails.
 
-However, it's worth noting that it was a great set up. You could control ingest throguh `BatchSize` and `MaximumBatchingWindowInSeconds`. That translates to send me events every x minutes or y numbner of events. Whichever comes first. It was incredibly reliable as well. The set-and-forget forget kind of system.
+The consumer Lambda doesn't poll Kinesis itself — an [event source mapping](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html) handles that. You configure `BatchSize` and `MaximumBatchingWindowInSeconds` to control how often the consumer is invoked. Mine is set to `batch=100` and `window=5s`, meaning: invoke the consumer every 5 seconds or when 100 records accumulate, whichever comes first.
 
-Instead, I used firehouse. It acts as a buffer so I'm not making a ton of request to S3. You'll notice that Firehose goes in front of the lambda and Kinesis is behind. That's because fire hose does nothing to control the number of land invocations--it's just reducing the amount of calls to s3.
+## Consumer
+This lambda is responsible for persisting data. It does two things in parallel:
+1. Batches records to S3. This is the persistence layer of this project. Records are partitioned by time so they can be queried with Athena:
 
-One critical aspect is defining how this data will be stored in the S3. The idea is that it should be easy to query the Athena or ingest it into some other system. Here is what I landed on:
+    `s3://tracking-pixel-events/events/year=2026/month=02/day=10/hour=21/{timestamp}.json.gz`
 
-s3://tracking-pixel-events-9162/events/year=2026/month=02/day=10/hour=21/tracking-pixel-events-1-2026-02-10-21-21-44-c41135c9-daee-4bda-a974-08f9bec315a9.gz
+2. Update DynamoDB. This was Claude's idea tbh. I wanted a good way to demo this project that even non-technical users could appreciate. It suggested a DynamoDB table to populate a dashboard. The table stores recent events and a couple of counters, all with a TTL of 7 days — it's not meant for long term storage, just enough to power a live view.
 
-That's great, but how do you demo it? 
+The consumer handler is concise:
 
-I have Claude to find for this idea.
+```javascript
+export const handler = async (event) => {
+  const records = event.Records.map(parseKinesisRecord);
 
+  await Promise.all([
+    writeToS3(records),
+    updateDynamoDB(records)
+  ]);
+};
+```
 
+---
+
+## What I'd do differently
+
+This works well for a demo but there are a few things I'd revisit for production:
+
+- **Dead letter queue.** If the consumer Lambda fails repeatedly, records currently just expire from Kinesis after 24h. A DLQ on the event source mapping would catch those.
+- **Multi-region.** Everything lives in us-west-1. For a real tracking pixel serving global traffic, you'd want CloudFront in front of the API Gateway at minimum.
+- **Schema validation.** The ingest Lambda trusts whatever comes in. Adding lightweight validation before writing to Kinesis would prevent garbage data from propagating downstream.
+
+The core pattern — API Gateway → Lambda → Kinesis → Lambda → S3 — is solid for high-throughput event ingestion. Kinesis is the key: it decouples the fast, user-facing ingest path from the slower persistence layer, and gives you a retry buffer for free.
 
