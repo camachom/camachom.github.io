@@ -23,9 +23,10 @@ span.brutal-pill {
   transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
 }
 
-/* Make pill hover consistent — shadow shrinks like Card/Button */
-span.brutal-pill:hover {
+/* Make pill hover consistent — only when inside a link */
+a span.brutal-pill:hover {
   filter: drop-shadow(1px 1px 0 rgb(0 0 0 / 1));
+  cursor: pointer;
 }
 
 :root 
