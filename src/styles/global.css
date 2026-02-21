@@ -4,15 +4,21 @@
 
 .card-shadow {
   filter: drop-shadow(7px 7px 0 rgb(0 0 0 / 1));
-  transition: filter 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
 .card-shadow:hover {
-  filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+  filter: drop-shadow(2px 2px 0 rgb(0 0 0 / 1));
+  transform: translate(5px, 5px);
 }
 
 /* Fix brutal-ui transition/animation issues */
 div.brutal-card {
-  transition: filter 0.3s ease-in-out;
+  transition: filter 0.3s ease-in-out, transform 0.3s ease-in-out;
+  cursor: pointer;
+}
+div.brutal-card:hover {
+  filter: drop-shadow(2px 2px 0 rgb(0 0 0 / 1));
+  transform: translate(5px, 5px);
 }
 
 a.brutal-btn {
