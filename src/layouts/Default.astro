@@ -1,5 +1,6 @@
 ---
 import BaseNavigation from '@components/layout/BaseNavigation.astro';
+import BaseFooter from '@components/layout/BaseFooter.astro';
 import BaseHead from '../components/layout/BaseHead.astro';
 import Chatbot from '@components/Chatbot.astro';
 import '../styles/global.css';
@@ -21,6 +22,7 @@ const { title, description, classList, pageTitle, ogImage } = Astro.props;
   <body class:list={[classList]}>
     <BaseNavigation {pageTitle} />
     <slot />
+    <BaseFooter />
     <Chatbot />
   </body>
 </html>

@@ -7,14 +7,16 @@ interface Props {
   imgSrc?: ImageMetadata;
   imgAlt?: string;
   description: string;
+  date?: string;
   color?: string;
 }
 
-const { title, imgAlt, imgSrc, description, color = 'white' } = Astro.props;
+const { title, imgAlt, imgSrc, description, date, color = 'white' } = Astro.props;
 ---
 
 <Card color={color}>
   <h3 class='dm-serif text-2xl md:text-3xl font-bold'>{title}</h3>
+  {date && <p class='poppins text-sm text-slate-600 mt-1'>{date}</p>}
   {imgSrc && (
     <div class='rounded-lg border-3 border-black my-4 h-56'>
       <Image

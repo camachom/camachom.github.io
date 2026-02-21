@@ -1,43 +1,82 @@
 ---
-export interface Props {
-  backToTop?: boolean;
-}
+const navLinks = [
+  { name: 'Blog', url: '/blog/' },
+  { name: 'Projects', url: '/projects/' },
+  { name: 'About', url: '/about/' },
+];
 
-const { backToTop = false } = Astro.props;
+const socialLinks = [
+  {
+    name: 'GitHub',
+    url: 'https://github.com/camachom',
+    icon: 'i-uil-github',
+  },
+  {
+    name: 'LinkedIn',
+    url: 'https://www.linkedin.com/in/camachomartin/',
+    icon: 'i-uil-linkedin',
+  },
+  { name: 'RSS', url: '/feed.xml', icon: 'i-uil-rss' },
+];
+
+const year = new Date().getFullYear();
 ---
 
-{
-  backToTop && (
-    <button
-      class:list={[
-        backToTop ? `backToTop` : null,
-        'transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow',
-      ]}
-    >
-      <svg
-        xmlns='http://www.w3.org/2000/svg'
-        fill='none'
-        viewBox='0 0 24 24'
-        height='100%'
-        width='100%'
-        stroke-width='1.5'
-        stroke='currentColor'
-      >
-        <path
-          stroke-linecap='round'
-          stroke-linejoin='round'
-          d='m4.5 15.75 7.5-7.5 7.5 7.5'
-        />
-      </svg>
-    </button>
-  )
-}
+<button
+  class='backToTop transition-300 z-50 opacity-0 fixed flex bottom-[10px] right-[30px] w-10 h-10 bg-white border border-black card-shadow'
+>
+  <svg
+    xmlns='http://www.w3.org/2000/svg'
+    fill='none'
+    viewBox='0 0 24 24'
+    height='100%'
+    width='100%'
+    stroke-width='1.5'
+    stroke='currentColor'
+  >
+    <path
+      stroke-linecap='round'
+      stroke-linejoin='round'
+      d='m4.5 15.75 7.5-7.5 7.5 7.5'
+    />
+  </svg>
+</button>
 
-<footer class='bg-black text-white p-6'>
-  <h2 class='hidden'>Footer</h2>
-  <p class='outfit'>
-    me.vs.computer — Martin Camacho
-  </p>
+<footer class='bg-black text-white p-6 border-t-4 border-black poppins'>
+  <div class='max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6'>
+    <div class='flex flex-col items-center md:items-start gap-2'>
+      <a href='/' class='righteous text-xl hover:text-green-300 transition-colors duration-150'>me.vs.computer</a>
+      <p class='text-sm text-neutral-400'>&copy; {year} Martin Camacho</p>
+    </div>
+
+    <nav class='flex gap-6 text-sm'>
+      {
+        navLinks.map((item) => (
+          <a
+            href={item.url}
+            class='hover:text-green-300 transition-colors duration-150'
+          >
+            {item.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class='flex gap-4'>
+      {
+        socialLinks.map((item) => (
+          <a
+            href={item.url}
+            target={item.name === 'RSS' ? undefined : '_blank'}
+            title={item.name}
+            class='hover:text-green-300 transition-colors duration-150'
+          >
+            <div class:list={[item.icon, 'w-5 h-5']} />
+          </a>
+        ))
+      }
+    </div>
+  </div>
 </footer>
 
 <style>

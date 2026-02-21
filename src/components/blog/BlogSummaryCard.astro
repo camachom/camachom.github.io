@@ -10,6 +10,11 @@ interface Props {
 
 const { post, color } = Astro.props;
 const tags = post.data.tags || [];
+const formattedDate = post.data.pubDate.toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'short',
+  day: 'numeric',
+});
 ---
 
 <SummaryCard
@@ -17,6 +22,7 @@ const tags = post.data.tags || [];
   imgAlt={post.data.title}
   imgSrc={post.data.imgUrl}
   description={post.data.description || ''}
+  date={formattedDate}
   color={color}
 >
   <div class='flex justify-end my-4'>

@@ -2,7 +2,6 @@
 import { Image } from 'astro:assets';
 import Layout from '@layouts/Default.astro';
 import RecentBlogPosts from '@components/generic/RecentBlogPosts.astro';
-import MobileSocials from '@components/home/MobileSocials.astro';
 import { Pill } from '@eliancodes/brutal-ui';
 import { Button } from '@eliancodes/brutal-ui';
 import { Card } from '@eliancodes/brutal-ui';
@@ -26,16 +25,27 @@ const techStack = [
   description='Full-stack engineer with 7+ years of startup experience building revenue-critical systems end-to-end. Currently exploring LLMs and infrastructure.'
 >
   <main class='bg-white p-6'>
-    <MobileSocials />
-
     <!-- Hero Section -->
     <section id='hero' class='grid md:grid-cols-8 gap-8 mt-4'>
       <h2 class='hidden'>About Martin</h2>
 
+      <!-- Photo - shows first on mobile, second on desktop -->
+      <div class='col-span-full md:col-span-3 order-first md:order-last'>
+        <div class='h-[200px] md:h-[320px] border-3 border-black card-shadow bg-white overflow-hidden'>
+          <Image
+            src={martinImage}
+            alt='Martin Camacho'
+            width={800}
+            densities={[1, 2]}
+            class='w-full h-full object-cover object-[center_35%]'
+          />
+        </div>
+      </div>
+
       <!-- Left Card - Role/Title -->
       <div class='col-span-full md:col-span-5'>
         <Card color='#5eead4'>
-          <div class='flex flex-col justify-between items-start gap-4 min-h-[280px] md:min-h-[320px]'>
+          <div class='flex flex-col justify-between items-start gap-4 min-h-0 md:min-h-[320px]'>
             <div>
               <p class='outfit text-4xl md:text-6xl lg:text-7xl font-bold'>
                 Product Engineer
@@ -56,7 +66,7 @@ const techStack = [
                 Or ask my chatbot (bottom right)
               </p>
             </div>
-            <div class='flex gap-4 flex-wrap mt-4'>
+            <div class='flex gap-4 mt-4'>
               <Button target={'_self'} href='/blog/' color='#a7f3d0'>
                 Read my blog &rarr;
               </Button>
@@ -66,19 +76,6 @@ const techStack = [
             </div>
           </div>
         </Card>
-      </div>
-
-      <!-- Right Side - Photo -->
-      <div class='col-span-full md:col-span-3'>
-        <div class='h-[280px] md:h-[320px] border-3 border-black card-shadow bg-white overflow-hidden'>
-          <Image
-            src={martinImage}
-            alt='Martin Camacho'
-            width={800}
-            densities={[1, 2]}
-            class='w-full h-full object-cover object-[center_35%]'
-          />
-        </div>
       </div>
     </section>
 
