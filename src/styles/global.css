@@ -4,12 +4,28 @@
 
 .card-shadow {
   filter: drop-shadow(7px 7px 0 rgb(0 0 0 / 1));
-  transition: all;
-  transition-duration: 0.5s;
-  animation: ease-in-out;
+  transition: filter 0.3s ease-in-out;
 }
 .card-shadow:hover {
   filter: drop-shadow(5px 5px 0 rgb(0 0 0 / 1));
+}
+
+/* Fix brutal-ui transition/animation issues */
+div.brutal-card {
+  transition: filter 0.3s ease-in-out;
+}
+
+a.brutal-btn {
+  transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+span.brutal-pill {
+  transition: filter 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+/* Make pill hover consistent — shadow shrinks like Card/Button */
+span.brutal-pill:hover {
+  filter: drop-shadow(1px 1px 0 rgb(0 0 0 / 1));
 }
 
 :root 
