@@ -5,7 +5,7 @@ import BlogList from '@components/blog/BlogList.astro';
 
 const posts = await getCollection('blog').then((collection) =>
   collection
-    .filter((post) => !post.data.draft)
+    .filter((post) => import.meta.env.DEV || !post.data.draft)
     .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime())
 );
 ---

@@ -23,7 +23,7 @@ const interests = [
   <main class='bg-white p-6'>
     <section class='grid md:grid-cols-8 gap-8'>
       <div class='md:col-span-5'>
-        <Card>
+        <Card color="#fff">
           <h1 class='text-4xl md:text-6xl lg:text-8xl dm-serif mb-6'>About Me</h1>
 
           <div class='poppins space-y-4 text-lg'>
@@ -48,7 +48,7 @@ const interests = [
           <ul class='flex gap-2 flex-wrap'>
             {skills.map((skill) => (
               <li>
-                <Pill>
+                <Pill color="#5eead4">
                   <span class='sanchez'>{skill}</span>
                 </Pill>
               </li>
@@ -61,7 +61,7 @@ const interests = [
           <ul class='flex gap-2 flex-wrap'>
             {interests.map((interest) => (
               <li>
-                <Pill>
+                <Pill color="#5eead4">
                   <span class='sanchez'>{interest}</span>
                 </Pill>
               </li>
@@ -72,7 +72,7 @@ const interests = [
         <Card color='#79a8ff'>
           <h2 class='text-2xl md:text-4xl dm-serif mb-4'>Get in Touch</h2>
           <div class='flex flex-col gap-4'>
-            <Button href='https://www.linkedin.com/in/camachomartin/' target='_blank'>
+            <Button href='https://www.linkedin.com/in/camachomartin/' target='_blank' color='#79a8ff'>
               LinkedIn &rarr;
             </Button>
             <Button href='https://github.com/camachom' target='_blank' color='#fef08a'>
