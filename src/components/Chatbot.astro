@@ -33,8 +33,8 @@
 <style>
   .chatbot-widget {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
+    bottom: 24px;
+    right: 24px;
     z-index: 1000;
     font-family: system-ui, -apple-system, sans-serif;
     font-size: 14px;
@@ -262,15 +262,19 @@
 
     const newInput = newForm.querySelector('#chatbot-input') as HTMLInputElement;
 
+    const isMobile = () => window.innerWidth <= 480;
+
     newToggle.addEventListener('click', function() {
       container.classList.remove('chatbot-hidden');
       newToggle.classList.add('chatbot-hidden');
+      if (isMobile()) document.body.style.overflow = 'hidden';
       newInput?.focus();
     });
 
     newClose.addEventListener('click', function() {
       container.classList.add('chatbot-hidden');
       newToggle.classList.remove('chatbot-hidden');
+      document.body.style.overflow = '';
     });
 
     newForm.addEventListener('submit', async function(e) {
