@@ -263,18 +263,38 @@
     const newInput = newForm.querySelector('#chatbot-input') as HTMLInputElement;
 
     const isMobile = () => window.innerWidth <= 480;
+    let savedScrollY = 0;
+
+    function lockScroll() {
+      if (!isMobile()) return;
+      savedScrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function unlockScroll() {
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
+      document.body.style.overflow = '';
+      window.scrollTo(0, savedScrollY);
+    }
 
     newToggle.addEventListener('click', function() {
       container.classList.remove('chatbot-hidden');
       newToggle.classList.add('chatbot-hidden');
-      if (isMobile()) document.body.style.overflow = 'hidden';
+      lockScroll();
       newInput?.focus();
     });
 
     newClose.addEventListener('click', function() {
       container.classList.add('chatbot-hidden');
       newToggle.classList.remove('chatbot-hidden');
-      document.body.style.overflow = '';
+      unlockScroll();
     });
 
     newForm.addEventListener('submit', async function(e) {
