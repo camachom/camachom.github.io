@@ -72,7 +72,7 @@ The `Ingest` lambda from v0 bothered me a bit for a couple of reasons:
 
 `POST /e` can go directly from Gateway to Kinesis. There's no need to enrich or format data in any particular way since it's meant for internal use. That gets rid of the lambda bottleneck. 
 
-Unfortunately, that can't be done with `GET /p.gif`. This endpoint needs to return a pixel and Kinesis does not support that. There's a tradeoff here: I chose fire-and-forget:
+Unfortunately, that can't be done with `GET /p.gif`. This endpoint needs to return a pixel and Kinesis does not support that. There's a tradeoff here: I attempted to fire-and-forget:
 
 ```javascript
     // Fire-and-forget: don't await the Kinesis put before returning the GIF
@@ -93,9 +93,9 @@ Unfortunately, that can't be done with `GET /p.gif`. This endpoint needs to retu
 
 The lambda returns the pixel without waiting for Kinesis. There's a real caveat here: when a Lambda function returns, AWS can freeze the execution environment immediately. That pending `putKinesis()` promise may never resolve if the environment is frozen or recycled before the call completes. This means data loss isn't just "occasional" — it can happen regularly under certain invocation patterns.
 
-It would be interesting to measure exactly what that data loss looks like, but that's outside the scope of this project. 
+I gave the fire-and-forget approach a chance but it didn't work. After doing some manual testing, I estimate it was losing 1/3 requests. That's unacceptable. 
 
-For an educational project, that tradeoff is acceptable. The alternative would mean adding a queue or response streaming, which adds complexity that isn't justified for non-critical data. If I revisited this, I'd look at Kinesis Data Firehose to replace the consumer Lambda entirely — it handles batching and delivery to S3 natively.
+For now, I'll just keep it as is: a synchronous request to Kinesis and then return. The alternative would mean adding a queue or response streaming, which is out of scope. If I revisited this, I'd look at Kinesis Data Firehose to replace the consumer Lambda entirely — it handles batching and delivery to S3 natively.
 
 I found this exercise really helpful. Building a system from scratch feels totally different from maintaining one and adding features.
 
