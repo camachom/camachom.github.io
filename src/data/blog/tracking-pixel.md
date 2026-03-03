@@ -8,11 +8,19 @@ tags:
   - Software Engineering
 ---
 
-Tracking pixels have a simple job: return a 1x1 transparent gif. But they have to support a large load and any mistake can affect thousands if not millions of rows.
+Tracking pixels have a simple job: return a 1x1 transparent gif. But they have to support a large load and any mistake can affect thousands if not millions of events downstream.
 
 At my previous job, we would rank users every year and send them a badge they could show off on their website — similar to how restaurants flaunt Yelp stickers. The badge included a tracking pixel.
 
-I built a serverless implementation inspired by that system deployed on AWS via Terraform to us-west-1 (I know, I know, but I used to live in California). Here's the [demo](https://64caxv0uii.execute-api.us-west-1.amazonaws.com) and the [github repo](https://github.com/camachom/infra/tree/main/projects/tracking-pixel).
+I built a serverless implementation inspired by that system deployed on AWS via Terraform to us-west-1 (I know, I know, but I used to live in California). Here's the [demo](https://track.vs.computer/dashboard) and the [GitHub repo](https://github.com/camachom/infra/tree/main/projects/tracking-pixel).
+
+There are two endpoints exposed by this system: `GET /p.gif` and `POST /e`. 
+
+`GET /p.gif` is loaded on an HTML `<img>` tag and returns a 1x1 gif. Meant to be added on pages outside the org. 
+
+`POST /e` is internal. It supports custom events like clicking a button or closing a modal.
+
+# v0 Architecture
 
 ![Tracking pixel architecture diagram](/tracking-pixel-arch.svg)
 
@@ -20,10 +28,10 @@ I built a serverless implementation inspired by that system deployed on AWS via 
 You don't want to overwhelm your app server with analytics calls. At the end of the day, analytics are secondary to user interactions. All requests go to an API Gateway, integrated with an AWS Lambda. This is an easy task if you're already using AWS. You should add throttling (API Gateway supports rate and burst limits out of the box) to make sure it's not abused.
 
 ## Ingest
-Why have a lambda here in the first place and not integrate the API Gateway with Kinesis directly? It's a place to format the data and enrich the event before it hits the stream. All mine does is parse the User-Agent, write the record to Kinesis and return the pixel. Keep this lambda lightweight since it's not benefiting from Kinesis.
+Why have a lambda here in the first place and not integrate the API Gateway with Kinesis directly? It's a place to format the data and enrich the event before it hits the stream. Mine parses the User-Agent, adds a server-side timestamp, writes the record to Kinesis and returns the pixel. Keep this lambda lightweight — it runs before Kinesis, so it doesn't benefit from the stream's buffering.
 
 ## Data Stream
-This is the critical piece of infra that's enabling a high throughput suitable for analytics calls. Kinesis logs all the events from ingest and retains them for 24h (configurable). The idea is that ingest and consuming are now decoupled. It also allows retries if the consumer lambda fails.
+This is the critical piece of infra that's enabling a high throughput suitable for analytics calls. Kinesis logs all the events from ingest and retains them for 24h (configurable up to 365 days). The idea is that ingest and consumption are now decoupled. It also allows retries if the consumer lambda fails.
 
 The consumer Lambda doesn't poll Kinesis itself — an [event source mapping](https://docs.aws.amazon.com/lambda/latest/dg/with-kinesis.html) handles that. You configure `BatchSize` and `MaximumBatchingWindowInSeconds` to control how often the consumer is invoked. Mine is set to `batch=100` and `window=5s`, meaning: invoke the consumer every 5 seconds or when 100 records accumulate, whichever comes first.
 
@@ -33,7 +41,7 @@ This lambda is responsible for persisting data. It does two things in parallel:
 
     `s3://tracking-pixel-events/events/year=2026/month=02/day=10/hour=21/{timestamp}.json.gz`
 
-2. Update DynamoDB. This was Claude's idea tbh. I wanted a good way to demo this project that even non-technical users could appreciate. It suggested a DynamoDB table to populate a dashboard. The table stores recent events and a couple of counters, all with a TTL of 7 days — it's not meant for long term storage, just enough to power a live view.
+2. Updates DynamoDB. This was Claude's idea (credit where it's due). I wanted a good way to demo this project that even non-technical users could appreciate. It suggested a DynamoDB table to populate a dashboard showing recent events, page views over time, and top referrers. The table stores recent events and a couple of counters, all with a TTL of 7 days — it's not meant for long-term storage, just enough to power a live view.
 
 The consumer handler is concise:
 
@@ -50,13 +58,44 @@ export const handler = async (event) => {
 
 ---
 
-## What I'd do differently
+# v1 Architecture
 
-This works well for a demo but there are a few things I'd revisit for production:
+![Tracking pixel V1 architecture diagram](/tracking-pixel-arch-v1.svg)
 
-- **Dead letter queue.** If the consumer Lambda fails repeatedly, records currently just expire from Kinesis after 24h. A DLQ on the event source mapping would catch those.
-- **Multi-region.** Everything lives in us-west-1. For a real tracking pixel serving global traffic, you'd want CloudFront in front of the API Gateway at minimum.
-- **Schema validation.** The ingest Lambda trusts whatever comes in. Adding lightweight validation before writing to Kinesis would prevent garbage data from propagating downstream.
+## Problem
 
-The core pattern — API Gateway → Lambda → Kinesis → Lambda → S3 — is solid for high-throughput event ingestion. Kinesis is the key: it decouples the fast, user-facing ingest path from the slower persistence layer, and gives you a retry buffer for free.
+The `Ingest` lambda from v0 bothered me a bit for a couple of reasons:
+1. Bottleneck: even though it's lightweight, it's making a synchronous call to Kinesis, adding latency to every response. Kinesis still decouples ingest from consumption, but the caller has to wait for the `PutRecord` call to complete before getting a response.
+2. It's serving two endpoints that behave differently: `GET /p.gif` is meant for external use and returns a pixel while `POST /e` is meant for internal use and has a payload. 
+
+## Solution
+
+`POST /e` can go directly from Gateway to Kinesis. There's no need to enrich or format data in any particular way since it's meant for internal use. That gets rid of the lambda bottleneck. 
+
+Unfortunately, that can't be done with `GET /p.gif`. This endpoint needs to return a pixel and Kinesis does not support that. There's a tradeoff here: I chose fire-and-forget:
+
+```javascript
+    // Fire-and-forget: don't await the Kinesis put before returning the GIF
+    putKinesis(record).catch((err) => {
+        console.error("Kinesis PutRecord failed", { error: err?.message, requestId: record.requestId })
+    })
+
+    return {
+        statusCode: 200,
+        headers: {
+            "Content-Type": "image/gif",
+            "Cache-Control": "no-store, no-cache, must-revalidate, private"
+        },
+        body: PIXEL.toString("base64"),
+        isBase64Encoded: true
+    }
+```
+
+The lambda returns the pixel without waiting for Kinesis. There's a real caveat here: when a Lambda function returns, AWS can freeze the execution environment immediately. That pending `putKinesis()` promise may never resolve if the environment is frozen or recycled before the call completes. This means data loss isn't just "occasional" — it can happen regularly under certain invocation patterns.
+
+It would be interesting to measure exactly what that data loss looks like, but that's outside the scope of this project. 
+
+For an educational project, that tradeoff is acceptable. The alternative would mean adding a queue or response streaming, which adds complexity that isn't justified for non-critical data. If I revisited this, I'd look at Kinesis Data Firehose to replace the consumer Lambda entirely — it handles batching and delivery to S3 natively.
+
+I found this exercise really helpful. Building a system from scratch feels totally different from maintaining one and adding features.
 

@@ -20,7 +20,7 @@ The editor is responsible for scoring leads to determine what to pursue next, ro
 
 ## Why it's not live
 
-It's not financially feasible to put this online. Even with rate limiting, it's too expensive to run. I'm sure I could cut costs but I feel satisfied with where it is. If you're interested, you can email me with your questions and use case
+It's not financially feasible to put this online. Even with rate limiting, it's too expensive to run. I'm sure I could cut costs but I feel satisfied with where it is. If you're interested, you can email me with your questions and use case.
 
 ### Why I built it
 
