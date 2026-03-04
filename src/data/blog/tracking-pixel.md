@@ -20,6 +20,14 @@ There are two endpoints exposed by this system: `GET /p.gif` and `POST /e`.
 
 `POST /e` is internal. It supports custom events like clicking a button or closing a modal.
 
+Here's a short walkthrough of the system:
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; margin: 1rem 0;">
+  <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="https://www.youtube.com/embed/xhhAIkYSD8w" title="Tracking pixel demo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+*[Watch on YouTube](https://youtu.be/xhhAIkYSD8w) if the embed doesn't load.*
+
 # v0 Architecture
 
 ![Tracking pixel architecture diagram](/tracking-pixel-arch.svg)
