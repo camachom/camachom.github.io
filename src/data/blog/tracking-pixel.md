@@ -12,7 +12,7 @@ Tracking pixels have a simple job: return a 1x1 transparent gif. But they have t
 
 At my previous job, we would rank users every year and send them a badge they could show off on their website — similar to how restaurants flaunt Yelp stickers. The badge included a tracking pixel.
 
-I built a serverless implementation inspired by that system deployed on AWS via Terraform to us-west-1 (I know, I know, but I used to live in California). Here's the [demo](https://track.vs.computer/dashboard) and the [GitHub repo](https://github.com/camachom/infra/tree/main/projects/tracking-pixel).
+I built a serverless implementation inspired by that system deployed on AWS via Terraform to us-west-1 (I know, I know, but I used to live in California). Here's the [demo](https://track.vs.computer) and the [GitHub repo](https://github.com/camachom/infra/tree/main/projects/tracking-pixel).
 
 There are two endpoints exposed by this system: `GET /p.gif` and `POST /e`. 
 
